@@ -1,0 +1,401 @@
+[gd_scene load_steps=35 format=3 uid="uid://co1s67qdfd22q"]
+
+[ext_resource type="Script" path="res://Scripts/Main Scripts/Manager2D.gd" id="1_k0x16"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/vigette.gdshader" id="2_27riu"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/transition.gdshader" id="3_wjiw4"]
+[ext_resource type="Script" path="res://Scripts/Transition.gd" id="4_71q2r"]
+[ext_resource type="Texture2D" uid="uid://d1vbg02ti5t23" path="res://Sprites/Menu/result.png" id="5_n6kx5"]
+[ext_resource type="Script" path="res://Scripts/Main Scripts/FinishMenu.gd" id="6_8ah67"]
+[ext_resource type="Texture2D" uid="uid://4rmnju72c3xi" path="res://Sprites/Menu/menuButtons/diamond0.png" id="7_lnv5d"]
+[ext_resource type="Texture2D" uid="uid://8sbx8b8rc065" path="res://Sprites/Menu/menuButtons/MenuR0.png" id="8_iokaf"]
+[ext_resource type="Script" path="res://Scripts/mousehover.gd" id="9_5pmu6"]
+[ext_resource type="Texture2D" uid="uid://bvoy03okfbigk" path="res://Sprites/Menu/menuButtons/MenuR1.png" id="10_rc60j"]
+[ext_resource type="Texture2D" uid="uid://3mh82w17fsj2" path="res://Sprites/Menu/menuButtons/MenuR2.png" id="11_vwkt7"]
+[ext_resource type="Script" path="res://Scripts/Pause.gd" id="12_jm4o1"]
+[ext_resource type="Texture2D" uid="uid://8p18ebmy2e1t" path="res://Sprites/Menu/Pause/page.png" id="13_smvm8"]
+[ext_resource type="Texture2D" uid="uid://btbwba0gwrw0v" path="res://Sprites/Menu/Pause/buttons.png" id="14_thvhl"]
+[ext_resource type="Texture2D" uid="uid://dc8dfifv63uv2" path="res://Sprites/Menu/Pause/gameplay.png" id="15_jpugh"]
+[ext_resource type="Texture2D" uid="uid://cubimi26rfq0c" path="res://Sprites/levels/bg.png" id="16_f4sch"]
+[ext_resource type="Texture2D" uid="uid://rpyrirwo8hin" path="res://Sprites/map.png" id="17_5fign"]
+[ext_resource type="PackedScene" uid="uid://bbyra3gmog24w" path="res://Scenes/GameAssets/BlueSpirit.tscn" id="18_x6edk"]
+[ext_resource type="PackedScene" uid="uid://2lm6grw7etib" path="res://Scenes/GameAssets/exit.tscn" id="19_13qne"]
+[ext_resource type="PackedScene" uid="uid://bsvfkxga0dev1" path="res://Scenes/GameAssets/lamp.tscn" id="20_j3xm3"]
+[ext_resource type="Script" path="res://Scripts/SoundManager.gd" id="21_8hsil"]
+[ext_resource type="AudioStream" uid="uid://7os5m0roip73" path="res://Audio/SFX/dmGet.ogg" id="22_ugqrv"]
+[ext_resource type="Texture2D" uid="uid://t6d0ut2h7tiq" path="res://Sprites/levels/tiles.png" id="23_dgmif"]
+[ext_resource type="PackedScene" uid="uid://iad80vvplst" path="res://Scenes/GameAssets/MagicBlock.tscn" id="24_h2m65"]
+[ext_resource type="PackedScene" uid="uid://bstptwhcxs2pq" path="res://Scenes/GameAssets/MagicArea.tscn" id="26_308u5"]
+[ext_resource type="PackedScene" uid="uid://didsnkm8iehhh" path="res://Scenes/GameAssets/safe_area.tscn" id="27_kqg8g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvaxr"]
+shader = ExtResource("2_27riu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbl77"]
+shader = ExtResource("3_wjiw4")
+shader_parameter/enable = true
+shader_parameter/progress = 0.0
+shader_parameter/PixelSize = 28.535
+shader_parameter/color = Vector3(0, 0, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_aldyg"]
+polygon = PackedVector2Array(-2043, 1076, -2043, -1174, -543, -1174, -543, 176, -543, 176, 207, 176, 207, 476, -1293, 476, -1293, -274, -843, -274, -843, -424, -1443, -424, -1443, 626, 357, 626, 357, 26, -393, 26, -393, -1174, -393, -1174, 2007, -1174, 2007, 1076, 1257, 1076, 1257, 476, 1707, 476, 1707, -724, 57, -724, 57, -574, 1557, -574, 1557, -124, 807, -124, 807, 1076, 807, 1076)
+
+[sub_resource type="Gradient" id="Gradient_1h7qf"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.523013, 0.615063)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0.545098, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_haaap"]
+gradient = SubResource("Gradient_1h7qf")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pgox"]
+texture = ExtResource("23_dgmif")
+texture_region_size = Vector2i(50, 50)
+use_texture_padding = false
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/next_alternative_id = 2
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3834r"]
+tile_size = Vector2i(50, 50)
+sources/1 = SubResource("TileSetAtlasSource_7pgox")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_n6iur"]
+vertices = PackedVector2Array(3232, 765, 2559, 796, 2561, 261, 3058, 260, 3228, -1368, 3055, -1020, 954, -1374, 1289, -1022, 956, -303, 1291, -768, 1729, -303, 2788, -753, 2063, -431, 2792, -422, 2069, 773, 1724, 448, -712, 767, -213, 444, -717, -1371, -215, -748, 663, -1361, 537, -739, 671, -68, 537, -468, 1438, -43, 1437, 169, 44, 166, 43, -459)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 0, 3, 5), PackedInt32Array(6, 4, 5, 7), PackedInt32Array(8, 6, 7, 9), PackedInt32Array(10, 8, 9, 11, 12), PackedInt32Array(11, 13, 12), PackedInt32Array(10, 12, 14, 15), PackedInt32Array(15, 14, 16, 17), PackedInt32Array(17, 16, 18, 19), PackedInt32Array(19, 18, 20, 21), PackedInt32Array(21, 20, 22, 23), PackedInt32Array(24, 25, 26, 22), PackedInt32Array(22, 26, 27, 23)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(2549.28, 806.534, 2552.28, 251.534, 3048.28, 249.534, 3045.28, -1010.47, 1299.28, -1012.47, 1301.28, -778.466, 2798.28, -763.466, 2803.28, -412.466, 2073.28, -421.466, 2080.28, 783.534, -721.72, 776.534, -727.72, -1382.47, 673.28, -1371.47, 681.28, -78.466, 1449.28, -53.466, 1447.28, 179.534, 35.28, 175.534, 33.28, -469.466, 527.28, -478.466, 527.28, -729.466, -204.72, -738.466, -202.72, 433.534, 1714.28, 437.534, 1719.28, -293.466, 946.28, -293.466, 944.28, -1385.47, 3238.28, -1378.47, 3243.28, 774.534)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="S7" type="Node2D"]
+script = ExtResource("1_k0x16")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="vigette" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.682353)
+material = SubResource("ShaderMaterial_pvaxr")
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -753.0
+offset_top = -460.0
+offset_right = -713.0
+offset_bottom = -420.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(36.95, 23.847)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+color = Color(0, 0, 0, 0)
+
+[node name="Transition" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+material = SubResource("ShaderMaterial_mbl77")
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 1286.0
+offset_bottom = 726.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_71q2r")
+
+[node name="FinishSp" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(625, -352)
+scale = Vector2(0.835, 0.835)
+texture = ExtResource("5_n6kx5")
+script = ExtResource("6_8ah67")
+
+[node name="ResultText" type="RichTextLabel" parent="CanvasLayer/FinishSp"]
+offset_left = -324.551
+offset_top = -186.826
+offset_right = 336.894
+offset_bottom = 135.569
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 41
+bbcode_enabled = true
+text = "[center]The spirits have escaped!"
+
+[node name="Diamonds" type="Node2D" parent="CanvasLayer/FinishSp"]
+
+[node name="D1" type="Sprite2D" parent="CanvasLayer/FinishSp/Diamonds" groups=["Diamonds"]]
+position = Vector2(-171, -14.371)
+texture = ExtResource("7_lnv5d")
+hframes = 2
+
+[node name="TReq" type="RichTextLabel" parent="CanvasLayer/FinishSp/Diamonds/D1"]
+modulate = Color(1, 1, 1, 0.290196)
+offset_left = -46.9642
+offset_top = -17.9644
+offset_right = 49.7058
+offset_bottom = 43.2556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+
+[node name="D2" type="Sprite2D" parent="CanvasLayer/FinishSp/Diamonds" groups=["Diamonds"]]
+position = Vector2(-9, -14.371)
+texture = ExtResource("7_lnv5d")
+hframes = 2
+
+[node name="TReq" type="RichTextLabel" parent="CanvasLayer/FinishSp/Diamonds/D2"]
+modulate = Color(1, 1, 1, 0.290196)
+offset_left = -46.9642
+offset_top = -17.9644
+offset_right = 49.7058
+offset_bottom = 43.2556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+
+[node name="D3" type="Sprite2D" parent="CanvasLayer/FinishSp/Diamonds" groups=["Diamonds"]]
+position = Vector2(153, -14.371)
+texture = ExtResource("7_lnv5d")
+hframes = 2
+
+[node name="TReq" type="RichTextLabel" parent="CanvasLayer/FinishSp/Diamonds/D3"]
+modulate = Color(1, 1, 1, 0.290196)
+offset_left = -46.9642
+offset_top = -17.9644
+offset_right = 49.7058
+offset_bottom = 43.2556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+
+[node name="Button" type="Button" parent="CanvasLayer/FinishSp"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -279.042
+offset_top = 93.4132
+offset_right = -134.857
+offset_bottom = 233.803
+
+[node name="R0" type="Sprite2D" parent="CanvasLayer/FinishSp/Button"]
+position = Vector2(70.659, 74.2518)
+texture = ExtResource("8_iokaf")
+script = ExtResource("9_5pmu6")
+
+[node name="Button2" type="Button" parent="CanvasLayer/FinishSp"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -82.6349
+offset_top = 94.6105
+offset_right = 61.55
+offset_bottom = 235.0
+
+[node name="R1" type="Sprite2D" parent="CanvasLayer/FinishSp/Button2"]
+position = Vector2(70.6588, 74.2515)
+texture = ExtResource("10_rc60j")
+script = ExtResource("9_5pmu6")
+
+[node name="Button3" type="Button" parent="CanvasLayer/FinishSp"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 106.587
+offset_top = 101.796
+offset_right = 250.772
+offset_bottom = 242.186
+
+[node name="R2" type="Sprite2D" parent="CanvasLayer/FinishSp/Button3"]
+position = Vector2(70.658, 74.252)
+texture = ExtResource("11_vwkt7")
+script = ExtResource("9_5pmu6")
+
+[node name="Pause" type="Node2D" parent="CanvasLayer"]
+visible = false
+script = ExtResource("12_jm4o1")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -112.0
+offset_right = -68.9999
+offset_bottom = -71.9999
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(36.95, 23.847)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+color = Color(0, 0, 0, 0.513726)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Pause"]
+position = Vector2(640, 360)
+texture = ExtResource("13_smvm8")
+
+[node name="Button" type="Button" parent="CanvasLayer/Pause"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 195.0
+offset_top = 86.0
+offset_right = 339.185
+offset_bottom = 226.39
+
+[node name="R0" type="Sprite2D" parent="CanvasLayer/Pause/Button"]
+position = Vector2(70.659, 74.2518)
+texture = ExtResource("14_thvhl")
+hframes = 4
+script = ExtResource("9_5pmu6")
+
+[node name="Button2" type="Button" parent="CanvasLayer/Pause"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 195.0
+offset_top = 296.0
+offset_right = 339.185
+offset_bottom = 436.389
+
+[node name="R1" type="Sprite2D" parent="CanvasLayer/Pause/Button2"]
+position = Vector2(70.6588, 74.2515)
+texture = ExtResource("14_thvhl")
+hframes = 4
+frame = 1
+script = ExtResource("9_5pmu6")
+
+[node name="Button3" type="Button" parent="CanvasLayer/Pause"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 195.0
+offset_top = 511.0
+offset_right = 339.185
+offset_bottom = 651.39
+
+[node name="R2" type="Sprite2D" parent="CanvasLayer/Pause/Button3"]
+position = Vector2(74.413, 74.204)
+texture = ExtResource("14_thvhl")
+hframes = 4
+frame = 2
+script = ExtResource("9_5pmu6")
+
+[node name="HUD" type="Node2D" parent="CanvasLayer"]
+
+[node name="Button" type="Button" parent="CanvasLayer/HUD"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 1158.0
+offset_top = 12.0
+offset_right = 1302.19
+offset_bottom = 152.39
+scale = Vector2(0.6, 0.6)
+
+[node name="R0" type="Sprite2D" parent="CanvasLayer/HUD/Button"]
+position = Vector2(69, 69)
+texture = ExtResource("15_jpugh")
+hframes = 2
+script = ExtResource("9_5pmu6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.3, 0.3)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 31.925)
+scale = Vector2(3.47, 3.47)
+texture = ExtResource("16_f4sch")
+
+[node name="Map" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(4, 7)
+scale = Vector2(2.825, 2.825)
+texture = ExtResource("17_5fign")
+
+[node name="BlueS" parent="." instance=ExtResource("18_x6edk")]
+position = Vector2(1505, 909)
+
+[node name="BlueS2" parent="." instance=ExtResource("18_x6edk")]
+position = Vector2(1820, 909)
+
+[node name="BlueS3" parent="." instance=ExtResource("18_x6edk")]
+position = Vector2(1510, 632)
+
+[node name="BlueS5" parent="." instance=ExtResource("18_x6edk")]
+position = Vector2(-35, 339)
+
+[node name="Exit" parent="." instance=ExtResource("19_13qne")]
+position = Vector2(-935, 149)
+sp3 = 4
+
+[node name="Lamp" parent="." instance=ExtResource("20_j3xm3")]
+position = Vector2(2892, 158)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 1, 0.796078, 1)
+energy = 1.2
+blend_mode = 1
+range_z_max = 1
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_aldyg")
+
+[node name="click" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(-1239, 645)
+texture = SubResource("GradientTexture2D_haaap")
+
+[node name="SFX" type="Node2D" parent="."]
+script = ExtResource("21_8hsil")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("22_ugqrv")
+
+[node name="TileMap2" type="TileMap" parent="."]
+texture_filter = 1
+position = Vector2(207, 176)
+scale = Vector2(3, 3)
+tile_set = SubResource("TileSet_3834r")
+rendering_quadrant_size = 50
+format = 2
+layer_0/tile_data = PackedInt32Array(458736, 65537, 1, 393200, 1, 1, 327664, 1, 1, 262128, 1, 1, 196592, 1, 1, 131056, 1, 1, 65520, 1, 1, -16, 1, 1, -65552, 1, 1, -131088, 1, 1, -196624, 1, 1, -262160, 1, 1, -327696, 1, 1, -393232, 1, 1, -458768, 1, 1, -524304, 1, 1, 393228, 65537, 1, 327692, 1, 1, 262156, 1, 1, 196620, 1, 1, 131084, 1, 1, 65548, 1, 1, 12, 1, 1, -65524, 1, 1, -131060, 1, 1, -196596, 1, 1, -262132, 1, 1, -327668, 1, 1, -393204, 1, 1, -458740, 1, 1, -524276, 1, 1, -589812, 1, 1, 458737, 65537, 1, 458738, 65537, 1, 458739, 65537, 1, 458740, 65537, 1, 458741, 65537, 1, 458742, 65537, 1, 458743, 65537, 1, 458744, 65537, 1, 458745, 65537, 1, 458746, 65537, 1, 458747, 65537, 1, 458748, 65537, 1, 458749, 65537, 1, 458750, 65537, 1, 458751, 65537, 1, 393216, 65537, 1, 393217, 65537, 1, 393218, 65537, 1, 393219, 65537, 1, 393220, 65537, 1, 393221, 65537, 1, 393222, 65537, 1, 393223, 65537, 1, 393224, 65537, 1, 393225, 65537, 1, 393226, 65537, 1, 393227, 65537, 1, -589840, 65537, 1, -589839, 65537, 1, -589838, 65537, 1, -589837, 65537, 1, -589836, 65537, 1, -589835, 65537, 1, -589834, 65537, 1, -589833, 65537, 1, -589832, 65537, 1, -589831, 65537, 1, -589830, 65537, 1, -589829, 65537, 1, -589828, 65537, 1, -589827, 65537, 1, -589826, 65537, 1, -589825, 65537, 1, -655360, 65537, 1, -655359, 65537, 1, -655358, 65537, 1, -655357, 65537, 1, -655356, 65537, 1, -655355, 65537, 1, -655354, 65537, 1, -655353, 65537, 1, -655352, 65537, 1, -655351, 65537, 1, -655350, 65537, 1, -655349, 65537, 1, -655348, 65537, 1, 327686, 1, 1, 262150, 1, 1, 196614, 1, 1, 131078, 1, 1, 65542, 1, 0, 65543, 65537, 1, 65544, 65537, 1, 65545, 65537, 0, 9, 1, 1, -65527, 1, 1, -131063, 1, 1, -131064, 65537, 1, -131065, 65537, 1, -131066, 65537, 1, -131067, 65537, 1, -65531, 1, 2, 5, 1, 2, -196599, 1, 1, -262135, 1, 1, -327671, 1, 1, -393207, 1, 0, -393208, 65537, 1, -393209, 65537, 1, -393210, 65537, 1, -393211, 65537, 1, -393212, 65537, 1, -393213, 65537, 1, -393214, 65537, 1, -393215, 65537, 1, -393216, 65537, 1, -327681, 131073, 0, -327685, 1, 1, -262149, 1, 1, -196613, 1, 1, -131077, 1, 1, -65541, 1, 1, -5, 65537, 0, -4, 65537, 1, -3, 65537, 1, -2, 65537, 1, -1, 65537, 1, -65536, 1, 0, 0, 1, 1, 65536, 1, 1, 131072, 65537, 0, 196607, 65537, 1, 196606, 65537, 1, 196605, 65537, 1, 196604, 65537, 1, 196603, 65537, 1, 196602, 65537, 1, 196601, 65537, 1, 196600, 65537, 1, 196599, 65537, 1, 196598, 65537, 1, 196597, 65537, 0, 131061, 1, 1, 65525, 1, 1, -11, 1, 1, -65547, 1, 1, -131083, 1, 1, -196619, 1, 0, -196618, 65537, 1, -196617, 65537, 1, -196616, 131073, 1, -393221, 1, 1, -458757, 1, 1, -524293, 1, 1, 6, 1, 2, -65530, 1, 2, -65529, 1, 2, -65528, 1, 2, 8, 1, 2, 7, 1, 2, 65541, 1, 2, 131077, 1, 2, 196613, 1, 2, 262149, 1, 2, 327685, 1, 2, -131068, 131073, 0, -65532, 1, 1, 4, 1, 1, 65540, 1, 1, 131076, 1, 1, 196612, 1, 1, 262148, 1, 1, 327684, 1, 1)
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
+position = Vector2(-1283.28, 249.466)
+navigation_polygon = SubResource("NavigationPolygon_n6iur")
+
+[node name="MagicBlock" parent="." instance=ExtResource("24_h2m65")]
+position = Vector2(-386, 329)
+
+[node name="MagicArea" parent="." instance=ExtResource("26_308u5")]
+position = Vector2(-1643, -778)
+objectsToggle = [NodePath("../MagicBlock")]
+TotalRequired = 2
+AreaColor = Color(0, 1, 0, 1)
+
+[node name="SafeArea" parent="." instance=ExtResource("27_kqg8g")]
+position = Vector2(-61, 345)
+
+[connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button2" to="CanvasLayer/FinishSp/Button2/R1" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button2" to="CanvasLayer/FinishSp/Button2/R1" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button3" to="CanvasLayer/FinishSp/Button3/R2" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button3" to="CanvasLayer/FinishSp/Button3/R2" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Pause/Button" to="CanvasLayer/Pause/Button/R0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Pause/Button" to="CanvasLayer/Pause/Button/R0" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Pause/Button2" to="CanvasLayer/Pause/Button2/R1" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Pause/Button2" to="CanvasLayer/Pause/Button2/R1" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Pause/Button3" to="CanvasLayer/Pause/Button3/R2" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Pause/Button3" to="CanvasLayer/Pause/Button3/R2" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/HUD/Button" to="CanvasLayer/HUD/Button/R0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HUD/Button" to="CanvasLayer/HUD/Button/R0" method="_on_button_mouse_exited"]

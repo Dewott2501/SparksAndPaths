@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=3 uid="uid://bsvfkxga0dev1"]
+
+[ext_resource type="Texture2D" uid="uid://bx3ffhnb6trpp" path="res://Sprites/lights/luz.png" id="1_2kevm"]
+[ext_resource type="Texture2D" uid="uid://c6e021k0brhhw" path="res://Sprites/lamp.png" id="2_sq0ph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g426g"]
+size = Vector2(130, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wbne"]
+size = Vector2(362, 178)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rj3pq"]
+radius = 28.35
+height = 241.16
+
+[node name="Lamp" type="Node2D" groups=["Lamp"]]
+z_index = 1
+position = Vector2(18, 15)
+
+[node name="sign" type="StaticBody2D" parent="."]
+position = Vector2(-1252, 545)
+scale = Vector2(0.5, 0.5)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sign"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_g426g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="sign"]
+position = Vector2(4, -34)
+scale = Vector2(2, 2)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="sign/StaticBody2D"]
+position = Vector2(-2, -101)
+shape = SubResource("RectangleShape2D_3wbne")
+one_way_collision_margin = 0.0
+
+[node name="Light" type="PointLight2D" parent="sign"]
+z_index = 1
+position = Vector2(0, 202)
+scale = Vector2(2, 2)
+color = Color(0.992157, 0.945098, 0.207843, 1)
+shadow_enabled = true
+texture = ExtResource("1_2kevm")
+texture_scale = 4.6
+
+[node name="Lamp" type="Node2D" parent="."]
+position = Vector2(-1252, 545)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Lamp"]
+position = Vector2(0, 13)
+node_a = NodePath("../../sign")
+node_b = NodePath("../Body")
+bias = 0.9
+
+[node name="Body" type="RigidBody2D" parent="Lamp"]
+position = Vector2(0, 150)
+collision_layer = 16
+collision_mask = 16
+gravity_scale = 3.795
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp/Body"]
+position = Vector2(0, -28.38)
+shape = SubResource("CapsuleShape2D_rj3pq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamp/Body"]
+position = Vector2(-6.10352e-05, -76)
+scale = Vector2(0.545, 0.545)
+texture = ExtResource("2_sq0ph")

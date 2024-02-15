@@ -1,0 +1,100 @@
+[gd_scene load_steps=13 format=3 uid="uid://bjf1y2lfa7oeg"]
+
+[ext_resource type="Texture2D" uid="uid://dvhushv7lss0e" path="res://Sprites/bluePH.png" id="1_kwq77"]
+[ext_resource type="Script" path="res://Manager.gd" id="1_l2np1"]
+[ext_resource type="Shader" path="res://bloom.gdshader" id="2_224rr"]
+[ext_resource type="Texture2D" uid="uid://dfcscnddwyg0x" path="res://icon.svg" id="4_53lvr"]
+
+[sub_resource type="Environment" id="Environment_soxpf"]
+background_energy_multiplier = 0.0
+glow_enabled = true
+glow_bloom = 0.35
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p18ww"]
+shader = ExtResource("2_224rr")
+shader_parameter/BLOOM_THRESHOLD = 0.7
+shader_parameter/BLOOM_INTENSITY = 3.0
+shader_parameter/BLUR_ITERATIONS = 3
+shader_parameter/BLUR_SIZE = 0.03
+shader_parameter/BLUR_SUBDIVISIONS = 32
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_2ckvu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r83km"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qp3qb"]
+material = SubResource("StandardMaterial3D_r83km")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_al4ty"]
+albedo_color = Color(0.376471, 0.231373, 0.141176, 1)
+emission = Color(0.196078, 0, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qkjkh"]
+material = SubResource("StandardMaterial3D_al4ty")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1h3ed"]
+size = Vector3(1.87494, 1, 1.9314)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-3.81578e-08, -0.487814, 0.872948, -2.1323e-08, 0.872948, 0.487814, -1, 1.77636e-15, -4.37114e-08, 17.0499, 11.0675, 0)
+script = ExtResource("1_l2np1")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69577, 0)
+sorting_offset = 1.0
+billboard = 1
+texture = ExtResource("1_kwq77")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.294389, 0)
+light_color = Color(0, 0.792157, 1, 1)
+light_energy = 5.202
+light_indirect_energy = 3.747
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_soxpf")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = SubResource("ShaderMaterial_p18ww")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 7.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70182, 0, 17.5303)
+billboard = 1
+texture = ExtResource("4_53lvr")
+
+[node name="Nav" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_2ckvu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Nav"]
+transform = Transform3D(19.975, 0, 0, 0, 9.335, 0, 0, 0, 1, 5.02023, 0, 6.97912)
+layers = 2
+sorting_offset = 1.0
+mesh = SubResource("BoxMesh_qp3qb")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Nav"]
+transform = Transform3D(15, 0, 0, 0, 0.949, 0, 0, 0, 15, 0, 0, 0)
+mesh = SubResource("PlaneMesh_qkjkh")
+skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Nav/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Nav/MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0458069, 0, 0.0316163)
+shape = SubResource("BoxShape3D_1h3ed")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.994993, -3.44207e-09, 0.0999449, -0.099533, -0.0907022, 0.990892, 0.00906522, -0.995878, -0.090248, 0, 6.96937, 0)

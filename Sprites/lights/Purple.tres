@@ -1,0 +1,12 @@
+[gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://cco76h6v2fkkc"]
+
+[sub_resource type="Gradient" id="Gradient_lpbos"]
+offsets = PackedFloat32Array(0, 0.701299)
+colors = PackedColorArray(0.336464, 0.000909479, 0.839134, 0.572549, 0.359889, 0.00136306, 0.8174, 0)
+
+[resource]
+gradient = SubResource("Gradient_lpbos")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)

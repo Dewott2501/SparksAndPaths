@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2d1w1cgw3fey"]
+
+[ext_resource type="Texture2D" uid="uid://cnuck3s0m1vho" path="res://Sprites/Exit/particleBall.png" id="1_txiq0"]
+
+[sub_resource type="Gradient" id="Gradient_qeldo"]
+offsets = PackedFloat32Array(0, 0.713333)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="particle" type="CPUParticles2D"]
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+texture = ExtResource("1_txiq0")
+direction = Vector2(1, -27.73)
+spread = 180.0
+initial_velocity_min = 494.95
+initial_velocity_max = 1000.0
+angular_velocity_min = 276.36
+angular_velocity_max = 276.36
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+color_ramp = SubResource("Gradient_qeldo")

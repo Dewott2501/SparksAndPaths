@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpumh4nfcnj4c"]
+
+[ext_resource type="Texture2D" uid="uid://csiu0iy2i2lpa" path="res://Sprites/levels/props.png" id="1_m7hrq"]
+
+[node name="Props" type="Sprite2D"]
+texture_filter = 1
+texture = ExtResource("1_m7hrq")
+region_enabled = true
+region_rect = Rect2(0, 0, 116, 98)

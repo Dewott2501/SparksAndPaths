@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://didsnkm8iehhh"]
+
+[ext_resource type="Texture2D" uid="uid://bx3ffhnb6trpp" path="res://Sprites/lights/luz.png" id="1_la4i7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yagm3"]
+radius = 248.008
+
+[node name="SafeArea" type="Area2D"]
+position = Vector2(10, -1056)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yagm3")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.835294, 0.505882, 1)
+texture = ExtResource("1_la4i7")
+texture_scale = 2.95

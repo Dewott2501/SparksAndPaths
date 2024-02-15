@@ -1,0 +1,269 @@
+[gd_scene load_steps=20 format=3 uid="uid://23e1vhb8duxy"]
+
+[ext_resource type="Script" path="res://Scripts/Manager2D.gd" id="1_jd048"]
+[ext_resource type="Texture2D" uid="uid://rpyrirwo8hin" path="res://Sprites/map.png" id="2_2xrum"]
+[ext_resource type="Texture2D" uid="uid://d1vbg02ti5t23" path="res://Sprites/Menu/result.png" id="2_dfv6n"]
+[ext_resource type="Texture2D" uid="uid://8sbx8b8rc065" path="res://Sprites/Menu/menuButtons/MenuR0.png" id="3_2dgi6"]
+[ext_resource type="PackedScene" uid="uid://bbyra3gmog24w" path="res://Scenes/GameAssets/BlueSpirit.tscn" id="3_vn0bh"]
+[ext_resource type="Script" path="res://Scripts/FinishMenu.gd" id="3_xk6mj"]
+[ext_resource type="Texture2D" uid="uid://bvoy03okfbigk" path="res://Sprites/Menu/menuButtons/MenuR1.png" id="4_5avr2"]
+[ext_resource type="Texture2D" uid="uid://c6e021k0brhhw" path="res://Sprites/lamp.png" id="4_sa22o"]
+[ext_resource type="Texture2D" uid="uid://bx3ffhnb6trpp" path="res://Sprites/lights/luz.png" id="4_vhpjy"]
+[ext_resource type="Texture2D" uid="uid://3mh82w17fsj2" path="res://Sprites/Menu/menuButtons/MenuR2.png" id="5_4b6ak"]
+[ext_resource type="Script" path="res://Scripts/mousehover.gd" id="5_hh3a4"]
+[ext_resource type="PackedScene" uid="uid://2lm6grw7etib" path="res://Scenes/GameAssets/exit.tscn" id="5_sd8qm"]
+[ext_resource type="Texture2D" uid="uid://4rmnju72c3xi" path="res://Sprites/Menu/menuButtons/diamond0.png" id="6_33ax0"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qtycq"]
+vertices = PackedVector2Array(582, 354, 545, -277, 1607, -265, 1500, 110, -254, 606, -265, 40, 175, 48, 512, 606, 496, -67, 172, -13, 1510, 383, 1510, 611, 575, 613, 582, 355, 1507, 192, 2581, -593, 2749, -596, 2764, 116, 2388, -573, 2760, 192, 2756, 612, 1597, 389, -293, -1107, 1840, -1131, 1848, -576, 1607, -344, 541, -681, 1597, 607, 2382, -635, 1887, -657, 1896, -1132, 2719, -1123, 2748, -660, 2585, -646, -273, -11, 486, -677, 548, -348)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(8, 7, 6, 9), PackedInt32Array(10, 11, 12, 13, 14), PackedInt32Array(15, 16, 17, 3, 18), PackedInt32Array(14, 19, 20, 21), PackedInt32Array(22, 23, 24, 25, 26), PackedInt32Array(20, 27, 21), PackedInt32Array(14, 21, 10), PackedInt32Array(14, 13, 0, 3), PackedInt32Array(28, 29, 30, 31, 32, 33), PackedInt32Array(28, 33, 15, 18), PackedInt32Array(24, 18, 3, 2), PackedInt32Array(9, 34, 22, 35, 8), PackedInt32Array(25, 36, 26), PackedInt32Array(24, 2, 25), PackedInt32Array(22, 26, 35)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-263.719, 615.534, 522.281, 615.534, 506.281, -67.4662, 496.281, -668.466, 531.281, -670.466, 539.281, -339.466, 1597.28, -334.466, 1597.28, -275.466, 535.281, -288.466, 572.281, 354.534, 565.281, 623.534, 1520.28, 620.534, 1520.28, 393.534, 1587.28, 397.534, 1588.28, 616.534, 2766.28, 622.534, 2771.28, 182.534, 1516.28, 181.534, 1511.28, 119.534, 2775.28, 126.534, 2759.28, -607.466, 2592.28, -603.466, 2594.28, -637.466, 2759.28, -651.466, 2729.28, -1133.47, 1887.28, -1143.47, 1877.28, -648.466, 2373.28, -625.466, 2377.28, -583.466, 1858.28, -586.466, 1850.28, -1142.47, -303.719, -1117.47, -282.719, -1.46625, 162.281, -3.46625, 164.281, 37.5338, -275.719, 29.5338)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="Gradient" id="Gradient_w0fir"]
+colors = PackedColorArray(0.486275, 0.313726, 0.313726, 1, 0.713726, 0.47451, 0.47451, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ev0by"]
+gradient = SubResource("Gradient_w0fir")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g426g"]
+size = Vector2(130, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wbne"]
+size = Vector2(362, 178)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rj3pq"]
+radius = 28.35
+height = 241.16
+
+[node name="S1" type="Node2D"]
+script = ExtResource("1_jd048")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-1283.28, 249.466)
+navigation_polygon = SubResource("NavigationPolygon_qtycq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -753.0
+offset_top = -460.0
+offset_right = -713.0
+offset_bottom = -420.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(36.95, 23.847)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+color = Color(0, 0, 0, 0)
+
+[node name="FinishSp" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(625, -352)
+scale = Vector2(0.835, 0.835)
+texture = ExtResource("2_dfv6n")
+script = ExtResource("3_xk6mj")
+
+[node name="ResultText" type="RichTextLabel" parent="CanvasLayer/FinishSp"]
+offset_left = -324.551
+offset_top = -186.826
+offset_right = 336.894
+offset_bottom = 135.569
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 41
+bbcode_enabled = true
+text = "[center]Level Failed!"
+
+[node name="Diamonds" type="Node2D" parent="CanvasLayer/FinishSp"]
+
+[node name="D1" type="Sprite2D" parent="CanvasLayer/FinishSp/Diamonds" groups=["Diamonds"]]
+position = Vector2(-171, -14.371)
+texture = ExtResource("6_33ax0")
+hframes = 2
+
+[node name="TReq" type="RichTextLabel" parent="CanvasLayer/FinishSp/Diamonds/D1"]
+modulate = Color(1, 1, 1, 0.290196)
+offset_left = -46.9642
+offset_top = -17.9644
+offset_right = 49.7058
+offset_bottom = 43.2556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+
+[node name="D2" type="Sprite2D" parent="CanvasLayer/FinishSp/Diamonds" groups=["Diamonds"]]
+position = Vector2(-9, -14.371)
+texture = ExtResource("6_33ax0")
+hframes = 2
+
+[node name="TReq" type="RichTextLabel" parent="CanvasLayer/FinishSp/Diamonds/D2"]
+modulate = Color(1, 1, 1, 0.290196)
+offset_left = -46.9642
+offset_top = -17.9644
+offset_right = 49.7058
+offset_bottom = 43.2556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+
+[node name="D3" type="Sprite2D" parent="CanvasLayer/FinishSp/Diamonds" groups=["Diamonds"]]
+position = Vector2(153, -14.371)
+texture = ExtResource("6_33ax0")
+hframes = 2
+
+[node name="TReq" type="RichTextLabel" parent="CanvasLayer/FinishSp/Diamonds/D3"]
+modulate = Color(1, 1, 1, 0.290196)
+offset_left = -46.9642
+offset_top = -17.9644
+offset_right = 49.7058
+offset_bottom = 43.2556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+
+[node name="Button" type="Button" parent="CanvasLayer/FinishSp"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -279.042
+offset_top = 93.4132
+offset_right = -134.857
+offset_bottom = 233.803
+
+[node name="Button2" type="Button" parent="CanvasLayer/FinishSp"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -82.6349
+offset_top = 94.6105
+offset_right = 61.55
+offset_bottom = 235.0
+
+[node name="Button3" type="Button" parent="CanvasLayer/FinishSp"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 106.587
+offset_top = 101.796
+offset_right = 250.772
+offset_bottom = 242.186
+
+[node name="R0" type="Sprite2D" parent="CanvasLayer/FinishSp"]
+position = Vector2(-208.383, 167.665)
+scale = Vector2(1, 1)
+texture = ExtResource("3_2dgi6")
+script = ExtResource("5_hh3a4")
+
+[node name="R1" type="Sprite2D" parent="CanvasLayer/FinishSp"]
+position = Vector2(-11.9761, 168.862)
+scale = Vector2(1, 1)
+texture = ExtResource("4_5avr2")
+script = ExtResource("5_hh3a4")
+
+[node name="R2" type="Sprite2D" parent="CanvasLayer/FinishSp"]
+position = Vector2(177.245, 176.048)
+scale = Vector2(1, 1)
+texture = ExtResource("5_4b6ak")
+script = ExtResource("5_hh3a4")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.4, 0.4)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(7, -1)
+scale = Vector2(50.4531, 30.5313)
+texture = SubResource("GradientTexture2D_ev0by")
+
+[node name="Map" type="Sprite2D" parent="."]
+position = Vector2(4, 7)
+scale = Vector2(2.825, 2.825)
+texture = ExtResource("2_2xrum")
+
+[node name="BlueS" parent="." instance=ExtResource("3_vn0bh")]
+position = Vector2(-1391, 703)
+
+[node name="BlueS2" parent="." instance=ExtResource("3_vn0bh")]
+position = Vector2(-1199, 699)
+
+[node name="BlueS3" parent="." instance=ExtResource("3_vn0bh")]
+position = Vector2(-1271, 529)
+
+[node name="BlueS4" parent="." instance=ExtResource("3_vn0bh")]
+position = Vector2(-1429, 513)
+
+[node name="BlueS5" parent="." instance=ExtResource("3_vn0bh")]
+position = Vector2(-1115, 570)
+
+[node name="Lamp" type="Node2D" parent="." groups=["Lamp"]]
+z_index = 1
+
+[node name="sign" type="StaticBody2D" parent="Lamp"]
+position = Vector2(-1252, 545)
+scale = Vector2(0.5, 0.5)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp/sign"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_g426g")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Lamp/sign"]
+position = Vector2(4, -34)
+scale = Vector2(2, 2)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp/sign/StaticBody2D"]
+position = Vector2(-2, -101)
+shape = SubResource("RectangleShape2D_3wbne")
+one_way_collision_margin = 0.0
+
+[node name="Light" type="PointLight2D" parent="Lamp/sign"]
+z_index = 1
+position = Vector2(0, 202)
+scale = Vector2(2, 2)
+color = Color(0.992157, 0.945098, 0.207843, 1)
+texture = ExtResource("4_vhpjy")
+texture_scale = 4.6
+
+[node name="Lamp" type="Node2D" parent="Lamp"]
+position = Vector2(-1252, 545)
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Lamp/Lamp"]
+position = Vector2(0, 13)
+node_a = NodePath("../../sign")
+node_b = NodePath("../Body")
+bias = 0.9
+
+[node name="Body" type="RigidBody2D" parent="Lamp/Lamp"]
+position = Vector2(0, 150)
+collision_layer = 8
+collision_mask = 8
+gravity_scale = 3.795
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lamp/Lamp/Body"]
+position = Vector2(0, -28.38)
+shape = SubResource("CapsuleShape2D_rj3pq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Lamp/Lamp/Body"]
+position = Vector2(-6.10352e-05, -76)
+scale = Vector2(0.545, 0.545)
+texture = ExtResource("4_sa22o")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.4
+blend_mode = 1
+range_z_max = 1
+
+[node name="Exit" parent="." instance=ExtResource("5_sd8qm")]
+position = Vector2(1088, 616)
+
+[connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/R0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/R0" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button2" to="CanvasLayer/FinishSp/R1" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button2" to="CanvasLayer/FinishSp/R1" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button3" to="CanvasLayer/FinishSp/R2" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button3" to="CanvasLayer/FinishSp/R2" method="_on_button_mouse_exited"]

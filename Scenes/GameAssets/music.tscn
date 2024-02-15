@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://nw2cnlgum2gs"]
+
+[ext_resource type="AudioStream" uid="uid://btciy486ecqay" path="res://Audio/Music/level.wav" id="1_bk650"]
+
+[node name="Music" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_bk650")
+volume_db = -15.0
+autoplay = true

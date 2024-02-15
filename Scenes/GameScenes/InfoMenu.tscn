@@ -1,0 +1,142 @@
+[gd_scene load_steps=11 format=3 uid="uid://clc4arjsbkyha"]
+
+[ext_resource type="Script" path="res://Scripts/Main Scripts/infoMenu.gd" id="1_d6oub"]
+[ext_resource type="PackedScene" uid="uid://c20ldr86uq6d2" path="res://Scenes/GameAssets/important/transition.tscn" id="1_iaysa"]
+[ext_resource type="Texture2D" uid="uid://bukh4iqruln5g" path="res://Sprites/Menu/MenusHud/titlemenu.png" id="1_otyij"]
+[ext_resource type="Texture2D" uid="uid://l7nlyb2mb56e" path="res://Sprites/Menu/gamejam/escape.png" id="2_d0r24"]
+[ext_resource type="Texture2D" uid="uid://8663u5o81mm1" path="res://Sprites/Menu/gamejam/arrow.png" id="2_mf4bu"]
+[ext_resource type="Script" path="res://Scripts/mousehover.gd" id="3_4n470"]
+[ext_resource type="Texture2D" uid="uid://jwunhwcudqtx" path="res://Sprites/Menu/gamejam/Logo.png" id="3_x1oh0"]
+[ext_resource type="Texture2D" uid="uid://c4mxxq55udu81" path="res://Sprites/Menu/gamejam/house.png" id="4_5r242"]
+[ext_resource type="PackedScene" uid="uid://bly13v5pnk2fn" path="res://Scenes/GameAssets/important/sfx.tscn" id="5_86hwf"]
+[ext_resource type="Texture2D" uid="uid://ba3d7ewcwkaqd" path="res://Sprites/Menu/gamejam/logo1.png" id="8_yg5jf"]
+
+[node name="InfoMenu" type="Node2D"]
+script = ExtResource("1_d6oub")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Transition" parent="CanvasLayer" instance=ExtResource("1_iaysa")]
+
+[node name="Next" type="Button" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1106.0
+offset_top = 308.0
+offset_right = -18.0
+offset_bottom = -265.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="R0" type="Sprite2D" parent="CanvasLayer/Next"]
+position = Vector2(74.0001, 68)
+texture = ExtResource("2_mf4bu")
+script = ExtResource("3_4n470")
+
+[node name="Back" type="Button" parent="CanvasLayer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 174.0
+offset_top = 308.0
+offset_right = -950.0
+offset_bottom = -265.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(-1, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="R0" type="Sprite2D" parent="CanvasLayer/Back"]
+position = Vector2(74.0001, 68)
+texture = ExtResource("2_mf4bu")
+script = ExtResource("3_4n470")
+
+[node name="Home" type="Button" parent="CanvasLayer"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 14.0
+offset_right = -1086.72
+offset_bottom = -526.355
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.54, 0.54)
+metadata/_edit_use_anchors_ = true
+
+[node name="R0" type="Sprite2D" parent="CanvasLayer/Home"]
+position = Vector2(87.037, 90.7407)
+texture = ExtResource("4_5r242")
+script = ExtResource("3_4n470")
+
+[node name="Titlemenu" type="Sprite2D" parent="."]
+modulate = Color(0.235294, 0.290196, 0.431373, 1)
+position = Vector2(640, 360)
+texture = ExtResource("1_otyij")
+
+[node name="P1" type="Node2D" parent="."]
+
+[node name="Escape" type="Sprite2D" parent="P1"]
+position = Vector2(826, 572.875)
+scale = Vector2(0.195, 0.195)
+texture = ExtResource("2_d0r24")
+
+[node name="Logo" type="Sprite2D" parent="P1"]
+position = Vector2(826, 260.875)
+scale = Vector2(0.295, 0.295)
+texture = ExtResource("3_x1oh0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P1"]
+offset_left = 164.0
+offset_top = 86.0
+offset_right = 565.0
+offset_bottom = 810.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/normal_font_size = 24
+text = "This Game was made for the Godot Wild Jam #66 in February 2024
+
+the theme of the Game Jam was \"Escape\"
+
+I implemented the theme in the gameplay avoiding the spirits to escape and get them back to the magic sphere
+
+I also used the wild card \"Betrayal\",  Where you can turn friendly blue spirits in aggresive purple spirits, you can use it in your favor on some levels"
+
+[node name="P2" type="Node2D" parent="."]
+visible = false
+
+[node name="Logo1" type="Sprite2D" parent="P2"]
+modulate = Color(1, 1, 1, 0.227451)
+position = Vector2(633, 409)
+scale = Vector2(1.545, 1.545)
+texture = ExtResource("8_yg5jf")
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="P2"]
+offset_left = -2.0
+offset_top = 144.0
+offset_right = 1276.0
+offset_bottom = 868.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]A Game by 
+DewottDev
+
+Music and some SFX 
+by Kenny_L"
+
+[node name="SFX" parent="." instance=ExtResource("5_86hwf")]
+
+[connection signal="mouse_entered" from="CanvasLayer/Next" to="CanvasLayer/Next/R0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Next" to="CanvasLayer/Next/R0" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Back" to="CanvasLayer/Back/R0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Back" to="CanvasLayer/Back/R0" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Home" to="CanvasLayer/Home/R0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Home" to="CanvasLayer/Home/R0" method="_on_button_mouse_exited"]

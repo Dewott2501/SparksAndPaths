@@ -1,0 +1,88 @@
+[gd_scene load_steps=11 format=3 uid="uid://23e1vhb8duxy"]
+
+[ext_resource type="Script" path="res://Manager2D.gd" id="1_hajc8"]
+[ext_resource type="Texture2D" uid="uid://dfcscnddwyg0x" path="res://icon.svg" id="3_6n15j"]
+[ext_resource type="Script" path="res://BlueSpirit2D.gd" id="3_pas3d"]
+[ext_resource type="Texture2D" uid="uid://cydjrcb8a2hft" path="res://Sprites/bluePH.png" id="4_cxocq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_devon"]
+size = Vector2(187, 188)
+
+[sub_resource type="Gradient" id="Gradient_lpbos"]
+colors = PackedColorArray(0, 1, 1, 0.572549, 0, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ickw"]
+gradient = SubResource("Gradient_lpbos")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_iigj8"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hfix0"]
+gradient = SubResource("Gradient_iigj8")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_km44r"]
+outlines = Array[PackedVector2Array]([PackedVector2Array(-234.719, -682.466, 330.281, -679.466, 333.281, 587.534, -244.719, 587.534, -237.719, 120.534, 118.281, 120.534, 116.281, 39.5338, -234.719, 38.5338)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[node name="S1" type="Node2D"]
+script = ExtResource("1_hajc8")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="sign" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(40, 275)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_6n15j")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.4, 0.4)
+
+[node name="BlueS" type="CharacterBody2D" parent="." groups=["BlueS"]]
+position = Vector2(-1386, 674)
+scale = Vector2(0.5, 0.5)
+motion_mode = 1
+script = ExtResource("3_pas3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="BlueS"]
+texture = ExtResource("4_cxocq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlueS"]
+position = Vector2(4.5, 27)
+shape = SubResource("RectangleShape2D_devon")
+
+[node name="NavAG" type="NavigationAgent2D" parent="BlueS"]
+path_desired_distance = 4.0
+target_desired_distance = 4.0
+debug_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="BlueS"]
+texture = SubResource("GradientTexture2D_0ickw")
+texture_scale = 6.24
+
+[node name="Wall" type="Sprite2D" parent="."]
+position = Vector2(-905, 437)
+scale = Vector2(1.10919, 27.0831)
+texture = SubResource("GradientTexture2D_hfix0")
+
+[node name="Wall2" type="Sprite2D" parent="."]
+position = Vector2(-1978, 327)
+rotation = 1.5708
+scale = Vector2(1.10919, 27.0831)
+texture = SubResource("GradientTexture2D_hfix0")
+
+[node name="Wall3" type="Sprite2D" parent="."]
+position = Vector2(-990, 878)
+rotation = 1.5708
+scale = Vector2(1.10919, 27.0831)
+texture = SubResource("GradientTexture2D_hfix0")
+
+[node name="Wall4" type="Sprite2D" parent="."]
+position = Vector2(-1558, 445)
+scale = Vector2(1.10919, 27.0831)
+texture = SubResource("GradientTexture2D_hfix0")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-1283.28, 249.466)
+navigation_polygon = SubResource("NavigationPolygon_km44r")

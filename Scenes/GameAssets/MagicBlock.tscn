@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://iad80vvplst"]
+
+[ext_resource type="Texture2D" uid="uid://bgc4k6av1lxhs" path="res://Sprites/levels/magicblock.png" id="1_wm678"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygu55"]
+size = Vector2(233, 225)
+
+[node name="MagicBlock" type="StaticBody2D"]
+position = Vector2(-848, 778)
+scale = Vector2(1.36, 1.36)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 0, 1)
+texture = ExtResource("1_wm678")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, -3.5)
+shape = SubResource("RectangleShape2D_ygu55")

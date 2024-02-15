@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbyra3gmog24w"]
+
+[ext_resource type="Texture2D" uid="uid://cydjrcb8a2hft" path="res://Sprites/bluePH.png" id="1_0v0kp"]
+[ext_resource type="Script" path="res://BlueSpirit2D.gd" id="1_uqifg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_devon"]
+size = Vector2(187, 188)
+
+[sub_resource type="Gradient" id="Gradient_lpbos"]
+colors = PackedColorArray(0, 1, 1, 0.572549, 0, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ickw"]
+gradient = SubResource("Gradient_lpbos")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="BlueS" type="CharacterBody2D"]
+script = ExtResource("1_uqifg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_0v0kp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.5, 27)
+shape = SubResource("RectangleShape2D_devon")
+
+[node name="NavAG" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = SubResource("GradientTexture2D_0ickw")
+texture_scale = 6.24

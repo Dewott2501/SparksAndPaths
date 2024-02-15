@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjjgome3334hw"]
+
+[ext_resource type="Texture2D" uid="uid://cg8dt8rqlwrnp" path="res://Sprites/Menu/levelsquare.png" id="1_ftssb"]
+[ext_resource type="Script" path="res://Scripts/mousehover.gd" id="2_5hgu3"]
+[ext_resource type="Texture2D" uid="uid://gmb3dp7aqbf6" path="res://Sprites/Menu/levelscore.png" id="3_rhnpg"]
+[ext_resource type="Texture2D" uid="uid://oaafluyk4lro" path="res://Sprites/Menu/Numbs.png" id="4_eafvx"]
+
+[node name="Level0" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+top_level = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 163.0
+offset_top = 207.0
+offset_right = -940.719
+offset_bottom = -333.355
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(87.037, 90.7407)
+texture = ExtResource("1_ftssb")
+script = ExtResource("2_5hgu3")
+
+[node name="rating" type="Sprite2D" parent="Sprite"]
+position = Vector2(-0.3703, 33.2593)
+texture = ExtResource("3_rhnpg")
+vframes = 4
+
+[node name="Number" type="Sprite2D" parent="Sprite"]
+position = Vector2(1.963, -21.7407)
+texture = ExtResource("4_eafvx")
+hframes = 3
+vframes = 4
+frame = 1
+
+[connection signal="mouse_entered" from="." to="Sprite" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="." to="Sprite" method="_on_button_mouse_exited"]

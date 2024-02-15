@@ -1,0 +1,443 @@
+[gd_scene load_steps=39 format=3 uid="uid://12x1dywf4x7g"]
+
+[ext_resource type="Script" path="res://Scripts/Main Scripts/Manager2D.gd" id="1_qd6ug"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/vigette.gdshader" id="2_x36s3"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/transition.gdshader" id="3_hupwk"]
+[ext_resource type="Script" path="res://Scripts/Transition.gd" id="4_r6kft"]
+[ext_resource type="Texture2D" uid="uid://d1vbg02ti5t23" path="res://Sprites/Menu/result.png" id="5_vbfgj"]
+[ext_resource type="Script" path="res://Scripts/Main Scripts/FinishMenu.gd" id="6_g4gmp"]
+[ext_resource type="Texture2D" uid="uid://4rmnju72c3xi" path="res://Sprites/Menu/menuButtons/diamond0.png" id="7_at0pg"]
+[ext_resource type="Texture2D" uid="uid://8sbx8b8rc065" path="res://Sprites/Menu/menuButtons/MenuR0.png" id="8_doj1r"]
+[ext_resource type="Script" path="res://Scripts/mousehover.gd" id="9_o2pu6"]
+[ext_resource type="Texture2D" uid="uid://bvoy03okfbigk" path="res://Sprites/Menu/menuButtons/MenuR1.png" id="10_vm30y"]
+[ext_resource type="Texture2D" uid="uid://3mh82w17fsj2" path="res://Sprites/Menu/menuButtons/MenuR2.png" id="11_ixo3m"]
+[ext_resource type="Script" path="res://Scripts/Pause.gd" id="12_k1w8x"]
+[ext_resource type="Texture2D" uid="uid://8p18ebmy2e1t" path="res://Sprites/Menu/Pause/page.png" id="13_qe5ou"]
+[ext_resource type="Texture2D" uid="uid://btbwba0gwrw0v" path="res://Sprites/Menu/Pause/buttons.png" id="14_e2uiu"]
+[ext_resource type="Texture2D" uid="uid://dc8dfifv63uv2" path="res://Sprites/Menu/Pause/gameplay.png" id="15_pe8uk"]
+[ext_resource type="Texture2D" uid="uid://cubimi26rfq0c" path="res://Sprites/levels/bg.png" id="16_0nsal"]
+[ext_resource type="Texture2D" uid="uid://rpyrirwo8hin" path="res://Sprites/map.png" id="17_t8alp"]
+[ext_resource type="PackedScene" uid="uid://bbyra3gmog24w" path="res://Scenes/GameAssets/BlueSpirit.tscn" id="18_qshyb"]
+[ext_resource type="PackedScene" uid="uid://2lm6grw7etib" path="res://Scenes/GameAssets/exit.tscn" id="19_6j1b7"]
+[ext_resource type="PackedScene" uid="uid://bsvfkxga0dev1" path="res://Scenes/GameAssets/lamp.tscn" id="20_t8c3d"]
+[ext_resource type="Script" path="res://Scripts/SoundManager.gd" id="21_itfia"]
+[ext_resource type="AudioStream" uid="uid://7os5m0roip73" path="res://Audio/SFX/dmGet.ogg" id="22_oul67"]
+[ext_resource type="Texture2D" uid="uid://t6d0ut2h7tiq" path="res://Sprites/levels/tiles.png" id="23_encvf"]
+[ext_resource type="PackedScene" uid="uid://iad80vvplst" path="res://Scenes/GameAssets/MagicBlock.tscn" id="24_0jlxy"]
+[ext_resource type="Shader" path="res://Scripts/Shaders/cross.gdshader" id="25_lnmjx"]
+[ext_resource type="Texture2D" uid="uid://bgc4k6av1lxhs" path="res://Sprites/levels/magicblock.png" id="26_nswao"]
+[ext_resource type="PackedScene" uid="uid://bstptwhcxs2pq" path="res://Scenes/GameAssets/MagicArea.tscn" id="27_t1nbc"]
+[ext_resource type="PackedScene" uid="uid://didsnkm8iehhh" path="res://Scenes/GameAssets/safe_area.tscn" id="28_lhsym"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvaxr"]
+shader = ExtResource("2_x36s3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mbl77"]
+shader = ExtResource("3_hupwk")
+shader_parameter/enable = true
+shader_parameter/progress = 0.0
+shader_parameter/PixelSize = 28.535
+shader_parameter/color = Vector3(0, 0, 0)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e30vs"]
+polygon = PackedVector2Array(-2043, 476, -1743, 476, -1743, 926, -693, 926, -693, 1076, 507, 1076, 507, 926, 657, 926, 657, 1076, 807, 1076, 807, 176, 357, 176, 357, 476, 657, 476, 657, 776, 507, 776, 507, 626, 207, 626, 207, -424, 507, -424, 507, 26, 1257, 26, 1257, 176, 957, 176, 957, 1076, 2007, 1076, 2007, 176, 1707, 176, 1707, 26, 2007, 26, 2007, -1174, 507, -1174, 507, -724, 57, -724, 57, -874, 357, -874, 357, -1174, -243, -1174, -243, -874, -93, -874, -93, -724, -1143, -724, -1143, -1174, -2043, -1174, -2043, -424, -393, -424, -393, 626, -1593, 626, -1593, 476, -543, 476, -543, -274, -2043, -274)
+
+[sub_resource type="Gradient" id="Gradient_1h7qf"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.523013, 0.615063)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0.545098, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_haaap"]
+gradient = SubResource("Gradient_1h7qf")
+width = 200
+height = 200
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7pgox"]
+texture = ExtResource("23_encvf")
+texture_region_size = Vector2i(50, 50)
+use_texture_padding = false
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/next_alternative_id = 2
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_3834r"]
+tile_size = Vector2i(50, 50)
+sources/1 = SubResource("TileSetAtlasSource_7pgox")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_qhdxn"]
+vertices = PackedVector2Array(2211, 53, 2206, 789, 1958, 526, 1940, 68, 629, 795, 880, 531, 880, 60, 631, 52, 867, -643, 2189, -1386, 2189, -638, 1973, -667, 1973, -1144, 618, -1386, 867, -1159, 622, -646, -730, 800, -735, 258, -571, 265, -30, 809, -29, 259, -190, 258, 1469, -367, 1482, -224, 1486, 67, 2344, -496, 2364, -109, 2355, 41, 1653, 68, 1658, -230, 1663, -347, -566, -872, -724, -870, -723, -1383, -43, -1380, -42, -877, -180, -874, -569, -496, -182, -498, -186, -92, 3262, -494, 3263, -103, -575, -99, 171, -498, 171, -646, -736, -100, -739, -494, 163, -94, 164, 50, 1464, -638, 2345, -630, 1663, -638)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(6, 5, 4, 7, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 9, 12, 14), PackedInt32Array(15, 13, 14, 8, 7), PackedInt32Array(16, 17, 18, 19), PackedInt32Array(20, 19, 18, 21), PackedInt32Array(22, 23, 24, 6, 8), PackedInt32Array(10, 25, 26, 27, 0, 3, 28, 29, 30, 11), PackedInt32Array(31, 32, 33, 34), PackedInt32Array(31, 34, 35, 36), PackedInt32Array(37, 31, 36, 38, 39), PackedInt32Array(40, 41, 26, 25), PackedInt32Array(39, 21, 18, 42, 37), PackedInt32Array(43, 44, 15, 7), PackedInt32Array(45, 46, 37, 42), PackedInt32Array(47, 39, 38, 43), PackedInt32Array(7, 48, 47, 43), PackedInt32Array(8, 49, 22), PackedInt32Array(10, 50, 25), PackedInt32Array(30, 51, 11), PackedInt32Array(23, 22, 30, 29)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-739.72, 809.534, -20.72, 819.534, -18.72, 249.534, -179.72, 247.534, -175.72, -82.466, 153.28, -84.466, 155.28, 59.534, 621.28, 61.534, 619.28, 805.534, 2216.28, 798.534, 2221.28, 61.534, 2365.28, 50.534, 2365.28, 50.534, 2373.28, -99.466, 3274.28, -93.466, 3272.28, -504.466, 2354.28, -506.466, 2356.28, -640.466, 2199.28, -648.466, 2199.28, -1396.47, 608.28, -1396.47, 612.28, -656.466, 161.28, -656.466, 161.28, -508.466, -171.72, -508.466, -171.72, -508.466, -169.72, -864.466, -169.72, -864.466, -31.72, -868.466, -33.72, -1390.47, -732.72, -1394.47, -734.72, -860.466, -575.72, -862.466, -578.72, -506.466, -749.72, -504.466, -745.72, -91.466, -584.72, -89.466, -580.72, 254.534, -745.72, 247.534), PackedVector2Array(890.28, 520.534, 890.28, 69.534, 1497.28, 77.534, 1492.28, -214.466, 1648.28, -220.466, 1643.28, 77.534, 1930.28, 77.534, 1948.28, 515.534), PackedVector2Array(1479.28, -376.466, 1474.28, -648.466, 877.28, -653.466, 877.28, -1149.47, 1963.28, -1134.47, 1963.28, -676.466, 1653.28, -648.466, 1653.28, -358.466)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_72vc1"]
+shader = ExtResource("25_lnmjx")
+shader_parameter/color1 = Vector3(0, 1, 1)
+shader_parameter/color2 = Vector3(0, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygu55"]
+size = Vector2(233, 225)
+
+[node name="S10" type="Node2D"]
+script = ExtResource("1_qd6ug")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+
+[node name="vigette" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0.682353)
+material = SubResource("ShaderMaterial_pvaxr")
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -753.0
+offset_top = -460.0
+offset_right = -713.0
+offset_bottom = -420.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(36.95, 23.847)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+color = Color(0, 0, 0, 0)
+
+[node name="Transition" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+z_index = 1
+material = SubResource("ShaderMaterial_mbl77")
+offset_left = -8.0
+offset_top = -6.0
+offset_right = 1286.0
+offset_bottom = 726.0
+color = Color(0, 0, 0, 1)
+script = ExtResource("4_r6kft")
+
+[node name="FinishSp" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(625, -352)
+scale = Vector2(0.835, 0.835)
+texture = ExtResource("5_vbfgj")
+script = ExtResource("6_g4gmp")
+
+[node name="ResultText" type="RichTextLabel" parent="CanvasLayer/FinishSp"]
+offset_left = -324.551
+offset_top = -186.826
+offset_right = 336.894
+offset_bottom = 135.569
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 41
+bbcode_enabled = true
+text = "[center]The spirits have escaped!"
+
+[node name="Diamonds" type="Node2D" parent="CanvasLayer/FinishSp"]
+
+[node name="D1" type="Sprite2D" parent="CanvasLayer/FinishSp/Diamonds" groups=["Diamonds"]]
+position = Vector2(-171, -14.371)
+texture = ExtResource("7_at0pg")
+hframes = 2
+
+[node name="TReq" type="RichTextLabel" parent="CanvasLayer/FinishSp/Diamonds/D1"]
+modulate = Color(1, 1, 1, 0.290196)
+offset_left = -46.9642
+offset_top = -17.9644
+offset_right = 49.7058
+offset_bottom = 43.2556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+
+[node name="D2" type="Sprite2D" parent="CanvasLayer/FinishSp/Diamonds" groups=["Diamonds"]]
+position = Vector2(-9, -14.371)
+texture = ExtResource("7_at0pg")
+hframes = 2
+
+[node name="TReq" type="RichTextLabel" parent="CanvasLayer/FinishSp/Diamonds/D2"]
+modulate = Color(1, 1, 1, 0.290196)
+offset_left = -46.9642
+offset_top = -17.9644
+offset_right = 49.7058
+offset_bottom = 43.2556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+
+[node name="D3" type="Sprite2D" parent="CanvasLayer/FinishSp/Diamonds" groups=["Diamonds"]]
+position = Vector2(153, -14.371)
+texture = ExtResource("7_at0pg")
+hframes = 2
+
+[node name="TReq" type="RichTextLabel" parent="CanvasLayer/FinishSp/Diamonds/D3"]
+modulate = Color(1, 1, 1, 0.290196)
+offset_left = -46.9642
+offset_top = -17.9644
+offset_right = 49.7058
+offset_bottom = 43.2556
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 11
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+
+[node name="Button" type="Button" parent="CanvasLayer/FinishSp"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -279.042
+offset_top = 93.4132
+offset_right = -134.857
+offset_bottom = 233.803
+
+[node name="R0" type="Sprite2D" parent="CanvasLayer/FinishSp/Button"]
+position = Vector2(70.659, 74.2518)
+texture = ExtResource("8_doj1r")
+script = ExtResource("9_o2pu6")
+
+[node name="Button2" type="Button" parent="CanvasLayer/FinishSp"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -82.6349
+offset_top = 94.6105
+offset_right = 61.55
+offset_bottom = 235.0
+
+[node name="R1" type="Sprite2D" parent="CanvasLayer/FinishSp/Button2"]
+position = Vector2(70.6588, 74.2515)
+texture = ExtResource("10_vm30y")
+script = ExtResource("9_o2pu6")
+
+[node name="Button3" type="Button" parent="CanvasLayer/FinishSp"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 106.587
+offset_top = 101.796
+offset_right = 250.772
+offset_bottom = 242.186
+
+[node name="R2" type="Sprite2D" parent="CanvasLayer/FinishSp/Button3"]
+position = Vector2(70.658, 74.252)
+texture = ExtResource("11_ixo3m")
+script = ExtResource("9_o2pu6")
+
+[node name="Pause" type="Node2D" parent="CanvasLayer"]
+visible = false
+script = ExtResource("12_k1w8x")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -109.0
+offset_top = -112.0
+offset_right = -68.9999
+offset_bottom = -71.9999
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(36.95, 23.847)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+color = Color(0, 0, 0, 0.513726)
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Pause"]
+position = Vector2(640, 360)
+texture = ExtResource("13_qe5ou")
+
+[node name="Button" type="Button" parent="CanvasLayer/Pause"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 195.0
+offset_top = 86.0
+offset_right = 339.185
+offset_bottom = 226.39
+
+[node name="R0" type="Sprite2D" parent="CanvasLayer/Pause/Button"]
+position = Vector2(70.659, 74.2518)
+texture = ExtResource("14_e2uiu")
+hframes = 4
+script = ExtResource("9_o2pu6")
+
+[node name="Button2" type="Button" parent="CanvasLayer/Pause"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 195.0
+offset_top = 296.0
+offset_right = 339.185
+offset_bottom = 436.389
+
+[node name="R1" type="Sprite2D" parent="CanvasLayer/Pause/Button2"]
+position = Vector2(70.6588, 74.2515)
+texture = ExtResource("14_e2uiu")
+hframes = 4
+frame = 1
+script = ExtResource("9_o2pu6")
+
+[node name="Button3" type="Button" parent="CanvasLayer/Pause"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 195.0
+offset_top = 511.0
+offset_right = 339.185
+offset_bottom = 651.39
+
+[node name="R2" type="Sprite2D" parent="CanvasLayer/Pause/Button3"]
+position = Vector2(74.413, 74.204)
+texture = ExtResource("14_e2uiu")
+hframes = 4
+frame = 2
+script = ExtResource("9_o2pu6")
+
+[node name="HUD" type="Node2D" parent="CanvasLayer"]
+
+[node name="Button" type="Button" parent="CanvasLayer/HUD"]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = 1158.0
+offset_top = 12.0
+offset_right = 1302.19
+offset_bottom = 152.39
+scale = Vector2(0.6, 0.6)
+
+[node name="R0" type="Sprite2D" parent="CanvasLayer/HUD/Button"]
+position = Vector2(69, 69)
+texture = ExtResource("15_pe8uk")
+hframes = 2
+script = ExtResource("9_o2pu6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.3, 0.3)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(0, 31.925)
+scale = Vector2(3.47, 3.47)
+texture = ExtResource("16_0nsal")
+
+[node name="Map" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(4, 7)
+scale = Vector2(2.825, 2.825)
+texture = ExtResource("17_t8alp")
+
+[node name="BlueS" parent="." instance=ExtResource("18_qshyb")]
+position = Vector2(-642, 142)
+
+[node name="BlueS2" parent="." instance=ExtResource("18_qshyb")]
+position = Vector2(-327, 142)
+
+[node name="BlueS3" parent="." instance=ExtResource("18_qshyb")]
+position = Vector2(-480, -146)
+
+[node name="Exit" parent="." instance=ExtResource("19_6j1b7")]
+position = Vector2(1630, -23)
+
+[node name="Lamp" parent="." instance=ExtResource("20_t8c3d")]
+position = Vector2(768, -608)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 1, 0.796078, 1)
+energy = 0.65
+blend_mode = 1
+range_z_max = 1
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_e30vs")
+
+[node name="click" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+position = Vector2(-1239, 645)
+texture = SubResource("GradientTexture2D_haaap")
+
+[node name="SFX" type="Node2D" parent="."]
+script = ExtResource("21_itfia")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("22_oul67")
+
+[node name="TileMap2" type="TileMap" parent="."]
+texture_filter = 1
+position = Vector2(207, 176)
+scale = Vector2(3, 3)
+tile_set = SubResource("TileSet_3834r")
+rendering_quadrant_size = 50
+format = 2
+layer_0/tile_data = PackedInt32Array(458736, 65537, 1, 393200, 1, 1, 327664, 1, 1, 262128, 1, 1, 196592, 1, 1, 131056, 1, 1, 65520, 1, 1, -16, 1, 1, -65552, 1, 1, -131088, 1, 1, -196624, 1, 1, -262160, 1, 1, -327696, 1, 1, -393232, 1, 1, -458768, 1, 1, -524304, 1, 1, 393228, 65537, 1, 327692, 1, 1, 262156, 1, 1, 196620, 1, 1, 131084, 1, 1, 65548, 1, 1, 12, 1, 1, -65524, 1, 1, -131060, 1, 1, -196596, 1, 1, -262132, 1, 1, -327668, 1, 1, -393204, 1, 1, -458740, 1, 1, -524276, 1, 1, -589812, 1, 1, 458737, 65537, 1, 458738, 65537, 1, 458739, 65537, 1, 458740, 65537, 1, 458741, 65537, 1, 458742, 65537, 1, 458743, 65537, 1, 458744, 65537, 1, 458745, 65537, 1, 458746, 65537, 1, 458747, 65537, 1, 458748, 65537, 1, 458749, 65537, 1, 458750, 65537, 1, 458751, 65537, 1, 393216, 65537, 1, 393217, 65537, 1, 393218, 65537, 1, 393219, 65537, 1, 393220, 65537, 1, 393221, 65537, 1, 393222, 65537, 1, 393223, 65537, 1, 393224, 65537, 1, 393225, 65537, 1, 393226, 65537, 1, 393227, 65537, 1, -589840, 65537, 1, -589839, 65537, 1, -589838, 65537, 1, -589837, 65537, 1, -589836, 65537, 1, -589835, 65537, 1, -589834, 65537, 1, -589833, 65537, 1, -589832, 65537, 1, -589831, 65537, 1, -589830, 65537, 1, -589829, 65537, 1, -589828, 65537, 1, -589827, 65537, 1, -589826, 65537, 1, -589825, 65537, 1, -655360, 65537, 1, -655359, 65537, 1, -655358, 65537, 1, -655357, 65537, 1, -655356, 65537, 1, -655355, 65537, 1, -655354, 65537, 1, -655353, 65537, 1, -655352, 65537, 1, -655351, 65537, 1, -655350, 65537, 1, -655349, 65537, 1, -655348, 65537, 1, 393206, 1, 1, 327670, 1, 1, 262134, 1, 1, 196598, 1, 1, 131062, 1, 1, 131061, 65537, 0, 131057, 65537, 0, -196623, 65537, 0, -196619, 65537, 0, -196618, 65537, 0, -262154, 1, 1, -327690, 1, 1, -458762, 1, 1, -524298, 1, 1, -393226, 1, 1, -262155, 1, 0, -262159, 1, 0, 65521, 1, 0, 65525, 1, 0, 65526, 1, 0, -262138, 131073, 0, -262137, 65537, 1, -262136, 65537, 1, -262135, 65537, 1, -262134, 65537, 1, -262133, 65537, 1, -327675, 65537, 0, -393211, 1, 1, -458747, 1, 1, -524283, 1, 1, -589819, 1, 1, 196613, 1, 1, 262149, 1, 1, 327685, 1, 1, -327678, 131073, 1, -327679, 65537, 1, -327680, 65537, 1, -262145, 65537, 1, -262146, 65537, 1, -262147, 65537, 1, -262148, 131073, 0, -262151, 131073, 1, -262152, 65537, 1, -262153, 65537, 1, 196601, 1, 1, 196600, 65537, 2, 196599, 1, 2, -196608, 65537, 0, -262144, 1, 1, -524297, 1, 2, -458761, 1, 2, -393225, 1, 2, -327689, 1, 2, -524296, 1, 2, -458760, 1, 2, -393224, 1, 2, -327688, 1, 2, -393220, 131073, 0, -327684, 1, 1, -393219, 65537, 1, -327683, 1, 2, -393218, 65537, 1, -327682, 1, 2, -393217, 65537, 1, -327681, 1, 2, -458752, 65537, 1, -393216, 1, 2, -458751, 65537, 1, -393215, 1, 2, -458750, 131073, 1, -393214, 1, 1, -589818, 1, 2, -524282, 1, 2, -458746, 1, 2, -393210, 1, 2, -327674, 65537, 1, -589817, 1, 2, -524281, 1, 2, -458745, 1, 2, -393209, 1, 2, -327673, 65537, 1, -589816, 1, 2, -524280, 1, 2, -458744, 1, 2, -393208, 1, 2, -327672, 65537, 1, -589815, 1, 2, -524279, 1, 2, -458743, 1, 2, -393207, 1, 2, -327671, 65537, 1, -589814, 1, 2, -524278, 1, 2, -458742, 1, 2, -393206, 1, 2, -327670, 65537, 1, -589813, 1, 2, -524277, 1, 2, -458741, 1, 2, -393205, 1, 2, -327669, 65537, 1, 196614, 1, 2, 262150, 1, 2, 327686, 1, 2, 196615, 1, 2, 262151, 1, 2, 327687, 1, 2, 196616, 1, 2, 262152, 1, 2, 327688, 1, 2, 196617, 1, 2, 262153, 1, 2, 327689, 1, 2, 196618, 1, 2, 262154, 1, 2, 327690, 1, 2, 196619, 1, 2, 262155, 1, 2, 327691, 1, 2, 262135, 1, 2, 327671, 1, 2, 393207, 1, 2, 262136, 1, 2, 327672, 1, 2, 393208, 1, 2, 262137, 1, 1, 327673, 1, 1, 393209, 1, 1, -327687, 1, 1, -393223, 1, 1, -458759, 1, 1, -524295, 1, 1, 131063, 65537, 1, 131064, 65537, 1, 131065, 131073, 1, 196604, 1, 1, 196605, 1, 2, 196606, 1, 2, 196607, 1, 2, 0, 1, 1, 65536, 65537, 1, 131072, 1, 2, 65537, 65537, 1, 131073, 1, 2, 65538, 131073, 1, 131074, 1, 1, 131068, 131073, 0, 131069, 65537, 1, 131070, 65537, 1, 131071, 65537, 1, -65536, 1, 0, 262140, 131073, 0, 262141, 65537, 1, 262142, 65537, 1, 262143, 65537, 1, 196608, 65537, 1, 196609, 65537, 1, 196610, 131073, 1, 65541, 1, 0, 65542, 65537, 1, 65543, 65537, 1, 65544, 65537, 1, 65545, 65537, 1, 65546, 65537, 1, 65547, 65537, 1, 7, 65537, 1, 8, 65537, 1, 9, 65537, 1, 10, 65537, 1, 11, 65537, 1, 131077, 1, 1, 6, 131073, 0, 131078, 65537, 2, 131079, 65537, 2, 131080, 65537, 2, 131081, 65537, 2, 131082, 65537, 2, 131083, 65537, 2)
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-1283.28, 249.466)
+navigation_polygon = SubResource("NavigationPolygon_qhdxn")
+
+[node name="MagicBlock" parent="." instance=ExtResource("24_0jlxy")]
+position = Vector2(-542, 468)
+
+[node name="Sprite2D" parent="MagicBlock" index="0"]
+modulate = Color(1, 0, 1, 1)
+
+[node name="MagicBlock3" parent="." instance=ExtResource("24_0jlxy")]
+position = Vector2(-546, -583)
+
+[node name="Sprite2D" parent="MagicBlock3" index="0"]
+modulate = Color(1, 0, 1, 1)
+
+[node name="MagicBlock2" type="StaticBody2D" parent="."]
+position = Vector2(284, -51.0001)
+scale = Vector2(0.695, 0.695)
+
+[node name="Sprite2D" type="Sprite2D" parent="MagicBlock2"]
+material = SubResource("ShaderMaterial_72vc1")
+texture = ExtResource("26_nswao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagicBlock2"]
+visible = false
+position = Vector2(-1.5, -3.5)
+shape = SubResource("RectangleShape2D_ygu55")
+
+[node name="MagicArea" parent="." instance=ExtResource("27_t1nbc")]
+position = Vector2(-1676, 764)
+ExtraObj = [[NodePath("../MagicBlock2"), NodePath("../MagicArea2")]]
+AreaColor = Color(0, 1, 0, 1)
+
+[node name="MagicArea2" parent="." instance=ExtResource("27_t1nbc")]
+position = Vector2(-1658, -888)
+ExtraObj = [[NodePath("../MagicBlock2"), NodePath("../MagicArea")]]
+AreaColor = Color(0, 1, 1, 1)
+
+[node name="MagicArea3" parent="." instance=ExtResource("27_t1nbc")]
+position = Vector2(756, -57)
+objectsToggle = [NodePath("../MagicBlock"), NodePath("../MagicBlock3")]
+AreaColor = Color(1, 0, 1, 1)
+
+[node name="SafeArea" parent="." instance=ExtResource("28_lhsym")]
+position = Vector2(-1673, 758)
+scale = Vector2(1.28, 1.28)
+
+[connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button2" to="CanvasLayer/FinishSp/Button2/R1" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button2" to="CanvasLayer/FinishSp/Button2/R1" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button3" to="CanvasLayer/FinishSp/Button3/R2" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button3" to="CanvasLayer/FinishSp/Button3/R2" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Pause/Button" to="CanvasLayer/Pause/Button/R0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Pause/Button" to="CanvasLayer/Pause/Button/R0" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Pause/Button2" to="CanvasLayer/Pause/Button2/R1" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Pause/Button2" to="CanvasLayer/Pause/Button2/R1" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Pause/Button3" to="CanvasLayer/Pause/Button3/R2" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Pause/Button3" to="CanvasLayer/Pause/Button3/R2" method="_on_button_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/HUD/Button" to="CanvasLayer/HUD/Button/R0" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/HUD/Button" to="CanvasLayer/HUD/Button/R0" method="_on_button_mouse_exited"]
+
+[editable path="MagicBlock"]
+[editable path="MagicBlock3"]
