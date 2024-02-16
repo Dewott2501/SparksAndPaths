@@ -51,6 +51,7 @@ func SelectButton(button):
 			get_tree().reload_current_scene();
 		2:
 			get_node("../Transition").start(true);
+			if(button == 2): Music.FadeSong(false)
 			await get_tree().create_timer(0.5).timeout
 			get_tree().paused = false;
 			get_tree().change_scene_to_file("res://Scenes/GameScenes/LevelMenu.tscn")

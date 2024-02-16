@@ -12,9 +12,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("Mute"):
-		if(Music.volume_db == -15): Music.volume_db = -80;
-		else:  Music.volume_db = -15;
 	if(isActive):
 		for i in sprites.size():
 			if(sprites[i].ishovering):

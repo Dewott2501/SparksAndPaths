@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cbm8d1gt47us7"]
+[gd_scene load_steps=57 format=3 uid="uid://cbm8d1gt47us7"]
 
 [ext_resource type="Script" path="res://Scripts/Main Scripts/Manager2D.gd" id="1_2si58"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/vigette.gdshader" id="2_mcveq"]
@@ -28,6 +28,24 @@
 [ext_resource type="PackedScene" uid="uid://bstptwhcxs2pq" path="res://Scenes/GameAssets/MagicArea.tscn" id="25_xs4ug"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/cross.gdshader" id="25_yqou7"]
 [ext_resource type="PackedScene" uid="uid://didsnkm8iehhh" path="res://Scenes/GameAssets/safe_area.tscn" id="26_ya2ca"]
+[ext_resource type="PackedScene" uid="uid://b5bqhyqi3lmg1" path="res://Scenes/GameAssets/props/gem3.tscn" id="29_qbrlo"]
+[ext_resource type="PackedScene" uid="uid://bqs6lww5x3ks7" path="res://Scenes/GameAssets/props/gem2.tscn" id="30_mx4fs"]
+[ext_resource type="PackedScene" uid="uid://fss1eyg4oka3" path="res://Scenes/GameAssets/props/gem1.tscn" id="31_rimgd"]
+[ext_resource type="PackedScene" uid="uid://dwk688u0sahmt" path="res://Scenes/GameAssets/props/table.tscn" id="32_rkfc0"]
+[ext_resource type="PackedScene" uid="uid://p01bt2i7jtbk" path="res://Scenes/GameAssets/props/light1.tscn" id="33_5au24"]
+[ext_resource type="PackedScene" uid="uid://dc1x3pgx7ve3m" path="res://Scenes/GameAssets/props/bottle2.tscn" id="34_mlarv"]
+[ext_resource type="PackedScene" uid="uid://2yplji1jpi5" path="res://Scenes/GameAssets/props/bottle3.tscn" id="35_nj6i3"]
+[ext_resource type="PackedScene" uid="uid://c22m0612cc4w3" path="res://Scenes/GameAssets/props/gab2.tscn" id="36_qjioc"]
+[ext_resource type="PackedScene" uid="uid://cu32w6wqq128w" path="res://Scenes/GameAssets/props/bottle4.tscn" id="37_cylqm"]
+[ext_resource type="PackedScene" uid="uid://7m1luf548eid" path="res://Scenes/GameAssets/props/bottle1.tscn" id="38_24rkp"]
+[ext_resource type="PackedScene" uid="uid://fq4i43uyrxbj" path="res://Scenes/GameAssets/props/book2.tscn" id="39_6sabs"]
+[ext_resource type="PackedScene" uid="uid://b8w30p8r55n8q" path="res://Scenes/GameAssets/props/paper2.tscn" id="40_x2e8j"]
+[ext_resource type="PackedScene" uid="uid://dpjv4ebgh77g4" path="res://Scenes/GameAssets/props/Floor2.tscn" id="41_fyb10"]
+[ext_resource type="PackedScene" uid="uid://nuvh0a538phl" path="res://Scenes/GameAssets/props/floor1.tscn" id="42_kgju5"]
+[ext_resource type="PackedScene" uid="uid://dtdk23e2uisff" path="res://Scenes/GameAssets/props/light2.tscn" id="43_csrpf"]
+[ext_resource type="PackedScene" uid="uid://xl83qek2j30b" path="res://Scenes/GameAssets/props/OBook1.tscn" id="44_ur47m"]
+[ext_resource type="PackedScene" uid="uid://bpumh4nfcnj4c" path="res://Scenes/GameAssets/props/gab1.tscn" id="45_mqu4p"]
+[ext_resource type="PackedScene" uid="uid://dkvahvxyprbm2" path="res://Scenes/GameAssets/props/book1.tscn" id="46_psm8y"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pvaxr"]
 shader = ExtResource("2_mcveq")
@@ -91,7 +109,6 @@ script = ExtResource("1_2si58")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
-visible = false
 
 [node name="vigette" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.682353)
@@ -395,6 +412,125 @@ format = 2
 layer_0/tile_data = PackedInt32Array(458736, 65537, 1, 393200, 1, 1, 327664, 1, 1, 262128, 1, 1, 196592, 1, 1, 131056, 1, 1, 65520, 1, 1, -16, 1, 1, -65552, 1, 1, -131088, 1, 1, -196624, 1, 1, -262160, 1, 1, -327696, 1, 1, -393232, 1, 1, -458768, 1, 1, -524304, 1, 1, 393228, 65537, 1, 327692, 1, 1, 262156, 1, 1, 196620, 1, 1, 131084, 1, 1, 65548, 1, 1, 12, 1, 1, -65524, 1, 1, -131060, 1, 1, -196596, 1, 1, -262132, 1, 1, -327668, 1, 1, -393204, 1, 1, -458740, 1, 1, -524276, 1, 1, -589812, 1, 1, 458737, 65537, 1, 458738, 65537, 1, 458739, 65537, 1, 458740, 65537, 1, 458741, 65537, 1, 458742, 65537, 1, 458743, 65537, 1, 458744, 65537, 1, 458745, 65537, 1, 458746, 65537, 1, 458747, 65537, 1, 458748, 65537, 1, 458749, 65537, 1, 458750, 65537, 1, 458751, 65537, 1, 393216, 65537, 1, 393217, 65537, 1, 393218, 65537, 1, 393219, 65537, 1, 393220, 65537, 1, 393221, 65537, 1, 393222, 65537, 1, 393223, 65537, 1, 393224, 65537, 1, 393225, 65537, 1, 393226, 65537, 1, 393227, 65537, 1, -589840, 65537, 1, -589839, 65537, 1, -589838, 65537, 1, -589837, 65537, 1, -589836, 65537, 1, -589835, 65537, 1, -589834, 65537, 1, -589833, 65537, 1, -589832, 65537, 1, -589831, 65537, 1, -589830, 65537, 1, -589829, 65537, 1, -589828, 65537, 1, -589827, 65537, 1, -589826, 65537, 1, -589825, 65537, 1, -655360, 65537, 1, -655359, 65537, 1, -655358, 65537, 1, -655357, 65537, 1, -655356, 65537, 1, -655355, 65537, 1, -655354, 65537, 1, -655353, 65537, 1, -655352, 65537, 1, -655351, 65537, 1, -655350, 65537, 1, -655349, 65537, 1, -655348, 65537, 1, 196601, 65537, 1, 393209, 131073, 1, 196602, 65537, 1, 196603, 65537, 0, 131072, 131073, 0, 131073, 65537, 1, 131074, 131073, 1, 196610, 65537, 0, 327682, 1, 0, 131067, 1, 1, 65531, 1, 1, -5, 1, 1, -65541, 1, 1, -131077, 1, 1, -196613, 131073, 1, 65536, 1, 1, 0, 1, 1, -65536, 1, 1, -131072, 1, 1, -196608, 1, 1, -262144, 1, 0, -65535, 65537, 1, -65534, 65537, 1, -65533, 65537, 1, -65532, 65537, 1, -65531, 65537, 1, -65530, 131073, 1, -65526, 131073, 0, -65525, 65537, 1, 4, 1, 1, 65540, 1, 1, 131076, 1, 1, 196612, 1, 1, 262148, 1, 1, 327684, 1, 1, 196600, 65537, 1, 196599, 65537, 1, 196598, 65537, 1, 196597, 65537, 1, 196596, 131073, 0, 196594, 131073, 1, 196593, 65537, 1, 262130, 1, 1, 327666, 1, 1, 393202, 65537, 1, 393203, 65537, 1, 393204, 65537, 1, 393205, 65537, 1, 393206, 65537, 1, 393207, 65537, 1, 393208, 65537, 1, -196614, 65537, 1, -196615, 65537, 1, -196616, 65537, 1, -196617, 65537, 1, -196618, 65537, 1, -196619, 65537, 1, -196620, 65537, 1, -196621, 65537, 1, -196622, 65537, 1, -196623, 65537, 1, -393221, 65537, 1, -393225, 131073, 0, -458761, 1, 1, -524297, 1, 1, -393224, 65537, 1, -393223, 65537, 1, -393222, 65537, 1, -393220, 65537, 1, -393217, 131073, 0, -458752, 65537, 1, -458751, 131073, 1, -262143, 1, 0, -196607, 1, 1, -131071, 1, 1, -458756, 1, 1, -524292, 1, 1, 393201, 65537, 2, 327665, 65537, 2, 262129, 65537, 2, -524287, 1, 1, -589823, 1, 1, -393219, 131073, 1, -524296, 1, 2, -458760, 1, 2, -458759, 65537, 2, -458758, 65537, 2, -458757, 1, 2, -524293, 1, 2, -524294, 65537, 2, -524295, 1, 2)
 
 [node name="Props" type="Node2D" parent="."]
+
+[node name="Props7" parent="Props" instance=ExtResource("29_qbrlo")]
+position = Vector2(-1990, -210)
+
+[node name="Props8" parent="Props" instance=ExtResource("30_mx4fs")]
+position = Vector2(-1902, -220)
+
+[node name="Props9" parent="Props" instance=ExtResource("29_qbrlo")]
+position = Vector2(-1950, -132)
+rotation = 2.35619
+
+[node name="Props10" parent="Props" instance=ExtResource("30_mx4fs")]
+position = Vector2(-1892, -162)
+rotation = -1.309
+
+[node name="Props11" parent="Props" instance=ExtResource("31_rimgd")]
+position = Vector2(-1954, -176)
+rotation = 0.261799
+
+[node name="Props3" parent="Props" instance=ExtResource("32_rkfc0")]
+position = Vector2(-758, -165)
+
+[node name="Props12" parent="Props" instance=ExtResource("33_5au24")]
+position = Vector2(-630, -217)
+
+[node name="Props13" parent="Props" instance=ExtResource("34_mlarv")]
+position = Vector2(-893, -214)
+
+[node name="Props14" parent="Props" instance=ExtResource("35_nj6i3")]
+position = Vector2(-845, -173)
+
+[node name="Props2" parent="Props" instance=ExtResource("36_qjioc")]
+position = Vector2(-639, 416)
+rotation = 3.14159
+
+[node name="Props15" parent="Props" instance=ExtResource("37_cylqm")]
+position = Vector2(399, 224)
+rotation = -0.261799
+
+[node name="Props16" parent="Props" instance=ExtResource("34_mlarv")]
+position = Vector2(427, 323)
+rotation = 2.87979
+
+[node name="Props17" parent="Props" instance=ExtResource("38_24rkp")]
+position = Vector2(474, 246)
+
+[node name="Props18" parent="Props" instance=ExtResource("38_24rkp")]
+position = Vector2(523, 433)
+rotation = 0.785397
+
+[node name="Props19" parent="Props" instance=ExtResource("34_mlarv")]
+position = Vector2(427, 407)
+
+[node name="Props20" parent="Props" instance=ExtResource("35_nj6i3")]
+position = Vector2(491, 371)
+rotation = -0.261799
+
+[node name="Props4" parent="Props" instance=ExtResource("32_rkfc0")]
+position = Vector2(700, -93)
+
+[node name="Props21" parent="Props" instance=ExtResource("30_mx4fs")]
+position = Vector2(569, -59)
+
+[node name="Props22" parent="Props" instance=ExtResource("31_rimgd")]
+position = Vector2(609, -112)
+
+[node name="Props23" parent="Props" instance=ExtResource("39_6sabs")]
+position = Vector2(702, -129)
+rotation = -3.14159
+
+[node name="Props24" parent="Props" instance=ExtResource("40_x2e8j")]
+position = Vector2(764, -50)
+rotation = 0.523598
+
+[node name="Props25" parent="Props" instance=ExtResource("41_fyb10")]
+position = Vector2(1469, 128)
+
+[node name="Props26" parent="Props" instance=ExtResource("42_kgju5")]
+position = Vector2(-55, -446)
+
+[node name="Props5" parent="Props" instance=ExtResource("32_rkfc0")]
+position = Vector2(-127, 785)
+
+[node name="Props27" parent="Props" instance=ExtResource("43_csrpf")]
+position = Vector2(-253, 745)
+
+[node name="Props28" parent="Props" instance=ExtResource("44_ur47m")]
+position = Vector2(-125, 817)
+
+[node name="Props29" parent="Props" instance=ExtResource("42_kgju5")]
+position = Vector2(1363, -827)
+
+[node name="Props6" parent="Props" instance=ExtResource("32_rkfc0")]
+position = Vector2(1762, -1051)
+
+[node name="Props30" parent="Props" instance=ExtResource("36_qjioc")]
+position = Vector2(604, -1103)
+
+[node name="Props31" parent="Props" instance=ExtResource("45_mqu4p")]
+position = Vector2(1054, 990)
+rotation = -3.14159
+scale = Vector2(1.6, 1.6)
+
+[node name="Props32" parent="Props" instance=ExtResource("41_fyb10")]
+position = Vector2(-1057, -573)
+rotation = -1.57079
+scale = Vector2(1.58319, 1.58319)
+
+[node name="Props33" parent="Props" instance=ExtResource("39_6sabs")]
+position = Vector2(313, -1133)
+
+[node name="Props34" parent="Props" instance=ExtResource("46_psm8y")]
+position = Vector2(217, -1125)
+
+[node name="Props35" parent="Props" instance=ExtResource("46_psm8y")]
+position = Vector2(243, -1028)
+
+[node name="Props36" parent="Props" instance=ExtResource("39_6sabs")]
+position = Vector2(186, -955)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false

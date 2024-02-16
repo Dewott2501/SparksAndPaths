@@ -106,14 +106,15 @@ func selectOption(op):
 	useButtons = false;
 	var tra = get_node(("../Transition"))
 	tra.start(true)
+	var sceneName = str(get_tree().current_scene.name);
+	var numb = int(sceneName) + 1
+	if(op == 2 || numb >= 11): Music.FadeSong(false)
 	await get_tree().create_timer(0.5).timeout
 	match op:
 		0:
 			get_tree().reload_current_scene();
 		1:
 			print("siguiente nivel")
-			var sceneName = str(get_tree().current_scene.name);
-			var numb = int(sceneName) + 1
 			if(numb >= 11):
 				get_tree().change_scene_to_file("res://Scenes/GameScenes/EndingMenu.tscn")
 				return;

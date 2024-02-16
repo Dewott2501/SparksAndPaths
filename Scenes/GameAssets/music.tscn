@@ -1,9 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://nw2cnlgum2gs"]
+[gd_scene load_steps=3 format=3 uid="uid://nw2cnlgum2gs"]
 
-[ext_resource type="AudioStream" uid="uid://btciy486ecqay" path="res://Audio/Music/level.wav" id="1_bk650"]
+[ext_resource type="AudioStream" uid="uid://c0783gw4g6ah3" path="res://Audio/Music/menu.wav" id="1_srgq7"]
+[ext_resource type="Script" path="res://Scripts/Main Scripts/music.gd" id="2_hgtxt"]
 
 [node name="Music" type="AudioStreamPlayer"]
 process_mode = 3
-stream = ExtResource("1_bk650")
+stream = ExtResource("1_srgq7")
 volume_db = -15.0
 autoplay = true
+bus = &"Music"
+script = ExtResource("2_hgtxt")

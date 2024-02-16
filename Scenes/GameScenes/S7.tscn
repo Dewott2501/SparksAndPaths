@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://co1s67qdfd22q"]
+[gd_scene load_steps=44 format=3 uid="uid://co1s67qdfd22q"]
 
 [ext_resource type="Script" path="res://Scripts/Main Scripts/Manager2D.gd" id="1_k0x16"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/vigette.gdshader" id="2_27riu"]
@@ -25,7 +25,16 @@
 [ext_resource type="Texture2D" uid="uid://t6d0ut2h7tiq" path="res://Sprites/levels/tiles.png" id="23_dgmif"]
 [ext_resource type="PackedScene" uid="uid://iad80vvplst" path="res://Scenes/GameAssets/MagicBlock.tscn" id="24_h2m65"]
 [ext_resource type="PackedScene" uid="uid://bstptwhcxs2pq" path="res://Scenes/GameAssets/MagicArea.tscn" id="26_308u5"]
+[ext_resource type="PackedScene" uid="uid://nuvh0a538phl" path="res://Scenes/GameAssets/props/floor1.tscn" id="27_ai24o"]
 [ext_resource type="PackedScene" uid="uid://didsnkm8iehhh" path="res://Scenes/GameAssets/safe_area.tscn" id="27_kqg8g"]
+[ext_resource type="PackedScene" uid="uid://dpjv4ebgh77g4" path="res://Scenes/GameAssets/props/Floor2.tscn" id="28_f11ue"]
+[ext_resource type="PackedScene" uid="uid://u04rfr2lj1ej" path="res://Scenes/GameAssets/props/paper1.tscn" id="29_kjx0m"]
+[ext_resource type="PackedScene" uid="uid://dwk688u0sahmt" path="res://Scenes/GameAssets/props/table.tscn" id="30_h0621"]
+[ext_resource type="PackedScene" uid="uid://cqwpndp861rkh" path="res://Scenes/GameAssets/props/OBook2.tscn" id="31_xf1t0"]
+[ext_resource type="PackedScene" uid="uid://b5bqhyqi3lmg1" path="res://Scenes/GameAssets/props/gem3.tscn" id="32_cr7av"]
+[ext_resource type="PackedScene" uid="uid://b8w30p8r55n8q" path="res://Scenes/GameAssets/props/paper2.tscn" id="33_lbp78"]
+[ext_resource type="PackedScene" uid="uid://c22m0612cc4w3" path="res://Scenes/GameAssets/props/gab2.tscn" id="34_81wxf"]
+[ext_resource type="PackedScene" uid="uid://bpumh4nfcnj4c" path="res://Scenes/GameAssets/props/gab1.tscn" id="35_nqfty"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pvaxr"]
 shader = ExtResource("2_27riu")
@@ -368,6 +377,44 @@ layer_0/tile_data = PackedInt32Array(458736, 65537, 1, 393200, 1, 1, 327664, 1, 
 
 [node name="Props" type="Node2D" parent="."]
 
+[node name="Props17" parent="Props" instance=ExtResource("27_ai24o")]
+position = Vector2(115, -263)
+
+[node name="Props18" parent="Props" instance=ExtResource("28_f11ue")]
+position = Vector2(-739, -157)
+
+[node name="Props7" parent="Props" instance=ExtResource("29_kjx0m")]
+position = Vector2(-1181, 273)
+rotation = 2.61799
+
+[node name="Props8" parent="Props" instance=ExtResource("29_kjx0m")]
+position = Vector2(-932, 438)
+rotation = -1.309
+
+[node name="Props3" parent="Props" instance=ExtResource("30_h0621")]
+position = Vector2(-1840, 963)
+
+[node name="Props9" parent="Props" instance=ExtResource("31_xf1t0")]
+position = Vector2(-1839, 919)
+
+[node name="Props10" parent="Props" instance=ExtResource("32_cr7av")]
+position = Vector2(-1948, 982)
+
+[node name="Props11" parent="Props" instance=ExtResource("33_lbp78")]
+position = Vector2(-1723, 1001)
+
+[node name="Props12" parent="Props" instance=ExtResource("29_kjx0m")]
+position = Vector2(-1839, 994)
+rotation = 0.523598
+
+[node name="Props2" parent="Props" instance=ExtResource("34_81wxf")]
+position = Vector2(-643, -1116)
+
+[node name="Props4" parent="Props" instance=ExtResource("35_nqfty")]
+position = Vector2(1471, -337)
+rotation = 1.5708
+scale = Vector2(1.50488, 1.50488)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
 position = Vector2(-1283.28, 249.466)
@@ -383,7 +430,7 @@ TotalRequired = 2
 AreaColor = Color(0, 1, 0, 1)
 
 [node name="SafeArea" parent="." instance=ExtResource("27_kqg8g")]
-position = Vector2(-61, 345)
+position = Vector2(-241, 326)
 
 [connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_exited"]

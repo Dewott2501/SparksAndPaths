@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dwjketduo6q1n"]
+[gd_scene load_steps=48 format=3 uid="uid://dwjketduo6q1n"]
 
 [ext_resource type="Script" path="res://Scripts/Main Scripts/Manager2D.gd" id="1_2si58"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/transition.gdshader" id="2_ohtng"]
@@ -30,6 +30,15 @@
 [ext_resource type="PackedScene" uid="uid://dc1x3pgx7ve3m" path="res://Scenes/GameAssets/props/bottle2.tscn" id="28_5y5xn"]
 [ext_resource type="PackedScene" uid="uid://fq4i43uyrxbj" path="res://Scenes/GameAssets/props/book2.tscn" id="29_ej302"]
 [ext_resource type="PackedScene" uid="uid://cu32w6wqq128w" path="res://Scenes/GameAssets/props/bottle4.tscn" id="30_sgsgo"]
+[ext_resource type="PackedScene" uid="uid://dpjv4ebgh77g4" path="res://Scenes/GameAssets/props/Floor2.tscn" id="31_0otx0"]
+[ext_resource type="PackedScene" uid="uid://bpumh4nfcnj4c" path="res://Scenes/GameAssets/props/gab1.tscn" id="32_5w0ya"]
+[ext_resource type="PackedScene" uid="uid://nuvh0a538phl" path="res://Scenes/GameAssets/props/floor1.tscn" id="33_i2bhw"]
+[ext_resource type="PackedScene" uid="uid://c22m0612cc4w3" path="res://Scenes/GameAssets/props/gab2.tscn" id="34_kf250"]
+[ext_resource type="PackedScene" uid="uid://p01bt2i7jtbk" path="res://Scenes/GameAssets/props/light1.tscn" id="35_aplw1"]
+[ext_resource type="PackedScene" uid="uid://b5bqhyqi3lmg1" path="res://Scenes/GameAssets/props/gem3.tscn" id="36_hxaed"]
+[ext_resource type="PackedScene" uid="uid://2yplji1jpi5" path="res://Scenes/GameAssets/props/bottle3.tscn" id="37_so4hd"]
+[ext_resource type="PackedScene" uid="uid://xl83qek2j30b" path="res://Scenes/GameAssets/props/OBook1.tscn" id="38_c44lf"]
+[ext_resource type="PackedScene" uid="uid://dkvahvxyprbm2" path="res://Scenes/GameAssets/props/book1.tscn" id="39_odheu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hixou"]
 shader = ExtResource("2_w3tt4")
@@ -392,6 +401,60 @@ navigation_polygon = SubResource("NavigationPolygon_qoxfm")
 
 [node name="Props" type="Node2D" parent="."]
 
+[node name="Props3" parent="Props" instance=ExtResource("26_gt7xa")]
+position = Vector2(424, 676)
+
+[node name="Props7" parent="Props" instance=ExtResource("27_gaako")]
+position = Vector2(289, 716)
+
+[node name="Props8" parent="Props" instance=ExtResource("28_5y5xn")]
+position = Vector2(355, 732)
+
+[node name="Props9" parent="Props" instance=ExtResource("29_ej302")]
+position = Vector2(426, 641)
+rotation = -3.14159
+
+[node name="Props10" parent="Props" instance=ExtResource("30_sgsgo")]
+position = Vector2(564, 713)
+
+[node name="Props18" parent="Props" instance=ExtResource("31_0otx0")]
+position = Vector2(1442, -724)
+rotation = -1.57079
+scale = Vector2(1.56, 1.56)
+
+[node name="Props2" parent="Props" instance=ExtResource("32_5w0ya")]
+position = Vector2(-1063, -623)
+rotation = 3.14159
+
+[node name="Props17" parent="Props" instance=ExtResource("33_i2bhw")]
+position = Vector2(-665, -117)
+
+[node name="Props4" parent="Props" instance=ExtResource("34_kf250")]
+position = Vector2(1471, -352)
+
+[node name="Props11" parent="Props" instance=ExtResource("35_aplw1")]
+position = Vector2(1500, -366)
+
+[node name="Props12" parent="Props" instance=ExtResource("36_hxaed")]
+position = Vector2(1420, -361)
+
+[node name="Props13" parent="Props" instance=ExtResource("37_so4hd")]
+position = Vector2(551, -378)
+
+[node name="Props14" parent="Props" instance=ExtResource("30_sgsgo")]
+position = Vector2(604, -371)
+
+[node name="Props15" parent="Props" instance=ExtResource("37_so4hd")]
+position = Vector2(573, -323)
+
+[node name="Props16" parent="Props" instance=ExtResource("27_gaako")]
+position = Vector2(534, -283)
+
+[node name="Props19" parent="Props" instance=ExtResource("31_0otx0")]
+position = Vector2(-1029, 622)
+rotation = -1.57079
+scale = Vector2(1.37385, 1.37385)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(47.76, 0)
 zoom = Vector2(0.4, 0.4)
@@ -435,21 +498,17 @@ modulate = Color(1, 0, 1, 1)
 position = Vector2(-172, -195)
 scale = Vector2(1.94, 1.94)
 
-[node name="Props3" parent="." instance=ExtResource("26_gt7xa")]
-position = Vector2(424, 676)
+[node name="Props5" parent="." instance=ExtResource("26_gt7xa")]
+position = Vector2(-787, 422)
 
-[node name="Props7" parent="." instance=ExtResource("27_gaako")]
-position = Vector2(289, 716)
+[node name="Props20" parent="." instance=ExtResource("38_c44lf")]
+position = Vector2(-790, 447)
 
-[node name="Props8" parent="." instance=ExtResource("28_5y5xn")]
-position = Vector2(355, 732)
+[node name="Props21" parent="." instance=ExtResource("36_hxaed")]
+position = Vector2(-920, 392)
 
-[node name="Props9" parent="." instance=ExtResource("29_ej302")]
-position = Vector2(426, 641)
-rotation = -3.14159
-
-[node name="Props10" parent="." instance=ExtResource("30_sgsgo")]
-position = Vector2(564, 713)
+[node name="Props6" parent="." instance=ExtResource("39_odheu")]
+position = Vector2(-671, 390)
 
 [connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://12x1dywf4x7g"]
+[gd_scene load_steps=55 format=3 uid="uid://12x1dywf4x7g"]
 
 [ext_resource type="Script" path="res://Scripts/Main Scripts/Manager2D.gd" id="1_qd6ug"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/vigette.gdshader" id="2_x36s3"]
@@ -28,6 +28,21 @@
 [ext_resource type="Texture2D" uid="uid://bgc4k6av1lxhs" path="res://Sprites/levels/magicblock.png" id="26_nswao"]
 [ext_resource type="PackedScene" uid="uid://bstptwhcxs2pq" path="res://Scenes/GameAssets/MagicArea.tscn" id="27_t1nbc"]
 [ext_resource type="PackedScene" uid="uid://didsnkm8iehhh" path="res://Scenes/GameAssets/safe_area.tscn" id="28_lhsym"]
+[ext_resource type="PackedScene" uid="uid://dwk688u0sahmt" path="res://Scenes/GameAssets/props/table.tscn" id="29_eipgx"]
+[ext_resource type="PackedScene" uid="uid://bpumh4nfcnj4c" path="res://Scenes/GameAssets/props/gab1.tscn" id="30_d427w"]
+[ext_resource type="PackedScene" uid="uid://c22m0612cc4w3" path="res://Scenes/GameAssets/props/gab2.tscn" id="31_kdql0"]
+[ext_resource type="PackedScene" uid="uid://cu32w6wqq128w" path="res://Scenes/GameAssets/props/bottle4.tscn" id="32_yq2hc"]
+[ext_resource type="PackedScene" uid="uid://2yplji1jpi5" path="res://Scenes/GameAssets/props/bottle3.tscn" id="33_ne6ew"]
+[ext_resource type="PackedScene" uid="uid://dc1x3pgx7ve3m" path="res://Scenes/GameAssets/props/bottle2.tscn" id="34_gp3oj"]
+[ext_resource type="PackedScene" uid="uid://p01bt2i7jtbk" path="res://Scenes/GameAssets/props/light1.tscn" id="35_8sdnm"]
+[ext_resource type="PackedScene" uid="uid://xl83qek2j30b" path="res://Scenes/GameAssets/props/OBook1.tscn" id="36_6dcwf"]
+[ext_resource type="PackedScene" uid="uid://dkvahvxyprbm2" path="res://Scenes/GameAssets/props/book1.tscn" id="37_h5xq5"]
+[ext_resource type="PackedScene" uid="uid://fq4i43uyrxbj" path="res://Scenes/GameAssets/props/book2.tscn" id="38_3v13j"]
+[ext_resource type="PackedScene" uid="uid://u04rfr2lj1ej" path="res://Scenes/GameAssets/props/paper1.tscn" id="39_86gfl"]
+[ext_resource type="PackedScene" uid="uid://b8w30p8r55n8q" path="res://Scenes/GameAssets/props/paper2.tscn" id="40_ulanx"]
+[ext_resource type="PackedScene" uid="uid://nuvh0a538phl" path="res://Scenes/GameAssets/props/floor1.tscn" id="41_74sy8"]
+[ext_resource type="PackedScene" uid="uid://dpjv4ebgh77g4" path="res://Scenes/GameAssets/props/Floor2.tscn" id="43_5d86p"]
+[ext_resource type="PackedScene" uid="uid://b5bqhyqi3lmg1" path="res://Scenes/GameAssets/props/gem3.tscn" id="44_1hpu1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pvaxr"]
 shader = ExtResource("2_x36s3")
@@ -39,8 +54,12 @@ shader_parameter/progress = 0.0
 shader_parameter/PixelSize = 28.535
 shader_parameter/color = Vector3(0, 0, 0)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_e30vs"]
-polygon = PackedVector2Array(-2043, 476, -1743, 476, -1743, 926, -693, 926, -693, 1076, 507, 1076, 507, 926, 657, 926, 657, 1076, 807, 1076, 807, 176, 357, 176, 357, 476, 657, 476, 657, 776, 507, 776, 507, 626, 207, 626, 207, -424, 507, -424, 507, 26, 1257, 26, 1257, 176, 957, 176, 957, 1076, 2007, 1076, 2007, 176, 1707, 176, 1707, 26, 2007, 26, 2007, -1174, 507, -1174, 507, -724, 57, -724, 57, -874, 357, -874, 357, -1174, -243, -1174, -243, -874, -93, -874, -93, -724, -1143, -724, -1143, -1174, -2043, -1174, -2043, -424, -393, -424, -393, 626, -1593, 626, -1593, 476, -543, 476, -543, -274, -2043, -274)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_5e64n"]
+closed = false
+polygon = PackedVector2Array(-2347, -1688, -1597, -1688, -1597, -1088, -1747, -1088, -1747, -788, -1447, -788, -1447, -938, -997, -938, -997, -1688, 653, -1688, 653, -938, 803, -938, 803, -788, 1703, -788, 1703, -338, 803, -338, 803, -188, 653, -188, 653, -188, 653, 562, -997, 562, -997, -188, -1447, -188, -1447, -338, -1747, -338, -1747, -38, -1597, -38, -1597, 562, -2347, 562, -2347, -38, -2197, -38, -2197, -338, -2347, -338, -2347, -788, -2197, -788, -2197, -1088, -2347, -1088)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hjt16"]
+polygon = PackedVector2Array(-698, 262, -698, -188, -97, -188, -97, -488, 53, -488, 53, -188, 353, -188, 353, 262)
 
 [sub_resource type="Gradient" id="Gradient_1h7qf"]
 interpolation_mode = 1
@@ -91,7 +110,6 @@ script = ExtResource("1_qd6ug")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
-visible = false
 
 [node name="vigette" type="ColorRect" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.682353)
@@ -338,7 +356,10 @@ position = Vector2(-327, 142)
 position = Vector2(-480, -146)
 
 [node name="Exit" parent="." instance=ExtResource("19_6j1b7")]
-position = Vector2(1630, -23)
+position = Vector2(1555, -89)
+sp1 = 1
+sp2 = 2
+sp3 = 3
 
 [node name="Lamp" parent="." instance=ExtResource("20_t8c3d")]
 position = Vector2(768, -608)
@@ -350,8 +371,18 @@ blend_mode = 1
 range_z_max = 1
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
-occluder = SubResource("OccluderPolygon2D_e30vs")
+position = Vector2(304, 514)
+occluder = SubResource("OccluderPolygon2D_5e64n")
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
+position = Vector2(304, 514)
+occluder = SubResource("OccluderPolygon2D_hjt16")
+
+[node name="LightOccluder2D3" type="LightOccluder2D" parent="."]
+position = Vector2(304, -612)
+rotation = 3.14159
+scale = Vector2(-1, 1)
+occluder = SubResource("OccluderPolygon2D_hjt16")
 
 [node name="click" type="Sprite2D" parent="."]
 visible = false
@@ -376,7 +407,70 @@ layer_0/tile_data = PackedInt32Array(458736, 65537, 1, 393200, 1, 1, 327664, 1, 
 
 [node name="Props" type="Node2D" parent="."]
 
+[node name="Props3" parent="Props" instance=ExtResource("29_eipgx")]
+position = Vector2(-1665, -1064)
+
+[node name="Props4" parent="Props" instance=ExtResource("29_eipgx")]
+position = Vector2(-1683, 985)
+
+[node name="Props2" parent="Props" instance=ExtResource("30_d427w")]
+position = Vector2(860, 980)
+rotation = -3.14159
+scale = Vector2(1.6721, 1.6721)
+
+[node name="Props5" parent="Props" instance=ExtResource("31_kdql0")]
+position = Vector2(-594, -1109)
+
+[node name="Props7" parent="Props" instance=ExtResource("32_yq2hc")]
+position = Vector2(907, 1019)
+
+[node name="Props8" parent="Props" instance=ExtResource("33_ne6ew")]
+position = Vector2(-645, -1140)
+
+[node name="Props9" parent="Props" instance=ExtResource("34_gp3oj")]
+position = Vector2(-574, -1115)
+
+[node name="Props10" parent="Props" instance=ExtResource("35_8sdnm")]
+position = Vector2(-1787, -1106)
+
+[node name="Props11" parent="Props" instance=ExtResource("36_6dcwf")]
+position = Vector2(-1672, -1028)
+
+[node name="Props6" parent="Props" instance=ExtResource("37_h5xq5")]
+position = Vector2(-1542, -1114)
+
+[node name="Props12" parent="Props" instance=ExtResource("38_3v13j")]
+position = Vector2(-1805, 944)
+rotation = 3.14159
+
+[node name="Props13" parent="Props" instance=ExtResource("39_86gfl")]
+position = Vector2(-1724, 997)
+rotation = 2.61799
+
+[node name="Props14" parent="Props" instance=ExtResource("40_ulanx")]
+position = Vector2(-1603, 1015)
+rotation = -2.8798
+
+[node name="Props17" parent="Props" instance=ExtResource("41_74sy8")]
+position = Vector2(-55, -33)
+
+[node name="Props16" parent="Props" instance=ExtResource("31_kdql0")]
+position = Vector2(-1040, -361)
+
+[node name="Props18" parent="Props" instance=ExtResource("43_5d86p")]
+position = Vector2(-1678, 611)
+
+[node name="Props19" parent="Props" instance=ExtResource("43_5d86p")]
+position = Vector2(-1674, -633)
+
+[node name="Props20" parent="Props" instance=ExtResource("44_1hpu1")]
+position = Vector2(-664, 1028)
+
+[node name="Props21" parent="Props" instance=ExtResource("35_8sdnm")]
+position = Vector2(823, 1010)
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+visible = false
 position = Vector2(-1283.28, 249.466)
 navigation_polygon = SubResource("NavigationPolygon_qhdxn")
 
@@ -421,7 +515,7 @@ objectsToggle = [NodePath("../MagicBlock"), NodePath("../MagicBlock3")]
 AreaColor = Color(1, 0, 1, 1)
 
 [node name="SafeArea" parent="." instance=ExtResource("28_lhsym")]
-position = Vector2(-1673, 758)
+position = Vector2(-1691, 771)
 scale = Vector2(1.28, 1.28)
 
 [connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_entered"]

@@ -19,6 +19,10 @@ var finished = false;
 var curLamp = "";
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if(Music.volume < -30):
+		Music.changeSong("level")
+		Music.FadeSong(true);
+	
 	var lamps = get_tree().get_nodes_in_group("Lamp")
 	for i in lamps.size():
 		signL.append(lamps[i].get_node("sign"))

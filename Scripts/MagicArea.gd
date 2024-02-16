@@ -38,19 +38,20 @@ func _process(delta):
 				altUnlock = true;
 			else: altUnlock = false;
 	
-	for i in objectsToggle.size():
-		var _node = get_node(objectsToggle[i])
-		if(!unlock && !altUnlock):
-			if(!_node.visible):
-				_node.visible = true;
-				spawnParticle(_node);
-		else:
-			if(_node.visible):
-				_node.visible = false;
-				spawnParticle(_node);
-				
-		if(unlock || altUnlock): _node.set_collision_layer(2)
-		else: _node.set_collision_layer(1)
+	if(objectsToggle != null):
+		for i in objectsToggle.size():
+			var _node = get_node(objectsToggle[i])
+			if(!unlock && !altUnlock):
+				if(!_node.visible):
+					_node.visible = true;
+					spawnParticle(_node);
+			else:
+				if(_node.visible):
+					_node.visible = false;
+					spawnParticle(_node);
+					
+			if(unlock || altUnlock): _node.set_collision_layer(2)
+			else: _node.set_collision_layer(1)
 	
 	if(ExtraObj != null):
 		for i in ExtraObj.size():

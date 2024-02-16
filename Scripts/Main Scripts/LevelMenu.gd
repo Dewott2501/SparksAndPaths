@@ -6,6 +6,9 @@ var isActive = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if(Music.volume < -30):
+		Music.changeSong("menu")
+		Music.FadeSong(true);
 	for i in buttons.size():
 		buttons[i].modulate = Color(0.6, 0.6, 0.6)
 	generateLevels(10);
@@ -16,9 +19,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("Mute"):
-		if(Music.volume_db == -15): Music.volume_db = -80;
-		else:  Music.volume_db = -15;
 	if(isActive):
 		for i in buttons.size():
 			if(buttons[i].ishovering):
@@ -36,6 +36,7 @@ func _process(delta):
 	
 func SelectButton(button):
 	isActive = false
+	if(button != 0): Music.FadeSong(false);
 	get_node("CanvasLayer/Transition").start(true);
 	await get_tree().create_timer(0.5).timeout
 	if(button == 0):
@@ -49,7 +50,11 @@ func generateLevels(amount):
 		var p = load("res://Scenes/GameAssets/level.tscn");
 		var ins = p.instantiate();
 		var yval = 207;
-		
+		var numb = str(i + 1);
+		if(numb.length() > 1):
+			ins.get_child(0).get_child(2).visible = true
+			ins.get_child(0).get_child(2).frame = int(numb.left(1)) - 1;
+			ins.get_child(0).get_child(1).position.x += 17;
 		ins.get_child(0).get_child(1).frame = i; # LEVEL NUMBER
 		ins.get_child(0).get_child(0).frame = SaveData.saveVal[i]; # RATING VALUE
 		ins.name = str(i);
