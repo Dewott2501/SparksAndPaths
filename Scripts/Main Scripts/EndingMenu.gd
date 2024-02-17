@@ -23,5 +23,18 @@ func _ready():
 	var tween6 = get_tree().create_tween();
 	tween6.tween_property($Canvas/white, "modulate", Color(1, 1, 1, 1), 2);
 	await get_tree().create_timer(3).timeout
+	var tween7 = get_tree().create_tween();
+	tween7.tween_property($Canvas/white, "modulate", Color(1, 1, 1, 0), 2);
+	$PBG0/PL/Bg1.visible = true;
+	$PBG1/PL/she/Cut2.visible = true;
+	$PBG1/PL/she/Cut0.visible = false;
+	$PBG1/PL/she/Cut1.visible = false;
+	$PBG1/PL/she/Thanks.visible = true;
+	await get_tree().create_timer(6).timeout
+	var tween8 = get_tree().create_tween();
+	tween8.tween_property($PBG1/PL/she/Thanks, "modulate", Color(1, 1, 1, 0), 2);
+	var tween9 = get_tree().create_tween();
+	tween9.tween_property($PBG1/PL/she/Cut2, "modulate", Color(1, 1, 1, 0), 2);
+	await get_tree().create_timer(2).timeout
 	get_tree().change_scene_to_file("res://Scenes/GameScenes/TitleMenu.tscn")
 	pass # Replace with function body.

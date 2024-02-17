@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dq764wva5obby"]
+[gd_scene load_steps=12 format=3 uid="uid://dq764wva5obby"]
 
 [ext_resource type="Texture2D" uid="uid://678b7iw6ic6m" path="res://Sprites/Menu/final/bg0.png" id="1_opuwp"]
 [ext_resource type="Script" path="res://Scripts/Main Scripts/EndingMenu.gd" id="1_stddi"]
 [ext_resource type="Texture2D" uid="uid://chcyv3qlnosem" path="res://Sprites/Menu/final/cut0.png" id="2_wpxsh"]
 [ext_resource type="Texture2D" uid="uid://cglsnpmj756u0" path="res://Sprites/Menu/final/cut3.png" id="3_sou2a"]
 [ext_resource type="Texture2D" uid="uid://dwpvvrothnqcd" path="res://Sprites/Menu/final/cut1.png" id="4_65e58"]
+[ext_resource type="Texture2D" uid="uid://y8i30phfvt5m" path="res://Sprites/Menu/final/cut2.png" id="5_ocuya"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/transition.gdshader" id="6_0mvqj"]
+[ext_resource type="Texture2D" uid="uid://tpsqxm3dfofa" path="res://Sprites/Menu/final/thanks.png" id="6_nj6ae"]
 [ext_resource type="Script" path="res://Scripts/Transition.gd" id="7_dulwh"]
 [ext_resource type="PackedScene" uid="uid://bly13v5pnk2fn" path="res://Scenes/GameAssets/important/sfx.tscn" id="8_mshs5"]
 
@@ -32,6 +34,10 @@ position = Vector2(640, 360)
 [node name="Bg0" type="Sprite2D" parent="PBG0/PL"]
 texture = ExtResource("1_opuwp")
 
+[node name="Bg1" type="CanvasModulate" parent="PBG0/PL"]
+visible = false
+color = Color(0, 0, 0, 1)
+
 [node name="PBG1" type="ParallaxBackground" parent="."]
 scroll_base_offset = Vector2(640, 360)
 scroll_base_scale = Vector2(0.3, 0.3)
@@ -48,6 +54,18 @@ texture = ExtResource("4_65e58")
 
 [node name="Cut0" type="Sprite2D" parent="PBG1/PL/she"]
 texture = ExtResource("2_wpxsh")
+
+[node name="Cut2" type="Sprite2D" parent="PBG1/PL/she"]
+visible = false
+position = Vector2(123.4, 18.765)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("5_ocuya")
+
+[node name="Thanks" type="Sprite2D" parent="PBG1/PL/she"]
+visible = false
+position = Vector2(-50, -38.9833)
+scale = Vector2(0.763, 0.763)
+texture = ExtResource("6_nj6ae")
 
 [node name="PBG2" type="ParallaxBackground" parent="."]
 
