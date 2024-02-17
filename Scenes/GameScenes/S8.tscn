@@ -482,7 +482,6 @@ TotalRequired = 2
 AreaColor = Color(0, 1, 0, 1)
 
 [node name="MagicBlock" parent="." instance=ExtResource("24_jr5b8")]
-visible = false
 position = Vector2(-470, -51)
 scale = Vector2(0.745, 0.745)
 

@@ -6,6 +6,7 @@ extends Area2D
 @export var TotalRequired = 1;
 @export var AreaColor : Color;
 var p = load("res://Scenes/GameAssets/Particles/particleCube.tscn");
+@onready var sound = get_tree().get_current_scene().get_node("SFX");
 var amount = 0;
 var animt = 0;
 var unlock = false;
@@ -45,10 +46,12 @@ func _process(delta):
 				if(!_node.visible):
 					_node.visible = true;
 					spawnParticle(_node);
+					sound.playsound("cubeON", 1, 0.4)
 			else:
 				if(_node.visible):
 					_node.visible = false;
 					spawnParticle(_node);
+					sound.playsound("cubeOFF", 1, 0.4)
 					
 			if(unlock || altUnlock): _node.set_collision_layer(2)
 			else: _node.set_collision_layer(1)
@@ -62,11 +65,13 @@ func _process(delta):
 				if(extraBox.visible):
 					extraBox.visible = false;
 					spawnParticle(extraBox);
+					sound.playsound("cubeON", 1, 0.4)
 				extraBox.set_collision_layer(2)
 			else: 
 				if(!extraBox.visible):
 					extraBox.visible = true;
 					spawnParticle(extraBox);
+					sound.playsound("cubeOFF", 1, 0.4)
 				extraBox.set_collision_layer(1)
 
 	pass # Replace with function body.

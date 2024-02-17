@@ -15,6 +15,9 @@ func _process(delta):
 		AudioServer.set_bus_mute(1, !AudioServer.is_bus_mute(1))
 		
 	if(volume_db != volume):
-		volume_db = lerpf(volume_db, volume, delta * 10);
+		if(volume < volume_db):
+			volume_db = lerpf(volume_db, volume, delta * 0.5);
+		else:
+			volume_db = lerpf(volume_db, volume, delta * 4);
 	 
 	

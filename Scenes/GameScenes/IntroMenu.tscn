@@ -1,3 +1,34 @@
-[gd_scene format=3 uid="uid://s2iilevalpg5"]
+[gd_scene load_steps=6 format=3 uid="uid://s2iilevalpg5"]
+
+[ext_resource type="Script" path="res://Scenes/GameScenes/IntroMenu.gd" id="1_bot4t"]
+[ext_resource type="Texture2D" uid="uid://ym17c10d5yu8" path="res://Sprites/Menu/intro/cut0.png" id="1_jy31v"]
+[ext_resource type="Texture2D" uid="uid://fksgdysqfp4v" path="res://Sprites/Menu/intro/cut1.png" id="2_bwm0i"]
+[ext_resource type="PackedScene" uid="uid://c20ldr86uq6d2" path="res://Scenes/GameAssets/important/transition.tscn" id="4_1xhvp"]
+[ext_resource type="PackedScene" uid="uid://bly13v5pnk2fn" path="res://Scenes/GameAssets/important/sfx.tscn" id="5_5oekt"]
 
 [node name="IntroMenu" type="Node2D"]
+script = ExtResource("1_bot4t")
+
+[node name="Cam" type="Camera2D" parent="."]
+zoom = Vector2(1.2, 1.2)
+
+[node name="Cut0" type="Sprite2D" parent="."]
+texture = ExtResource("1_jy31v")
+
+[node name="Cut1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_bwm0i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Transition" parent="CanvasLayer" instance=ExtResource("4_1xhvp")]
+
+[node name="white" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="SFX" parent="." instance=ExtResource("5_5oekt")]

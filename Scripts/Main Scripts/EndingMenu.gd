@@ -1,8 +1,11 @@
 extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Music.changeSong("menu");
+	Music.changeSong("ENDING");
 	Music.FadeSong(true);
+	
+	#the horror
+	#Note: search a better way to do this type of s$%&
 	await get_tree().create_timer(0.5).timeout
 	var tween = get_tree().create_tween();
 	tween.tween_property($Canvas/white, "modulate", Color(1, 1, 1, 0), 1)

@@ -106,7 +106,7 @@ the theme of the Game Jam was \"Escape\"
 
 I implemented the theme in the gameplay avoiding the spirits to escape and get them back to the magic sphere
 
-I also used the wild card \"Betrayal\",  Where you can turn friendly blue spirits in aggresive purple spirits, you can use it in your favor on some levels"
+I had planned to use the wildcard  \"Betrayal\" when you lose a spirit but I didn't have the time to implement it..."
 
 [node name="P2" type="Node2D" parent="."]
 visible = false

@@ -575,7 +575,6 @@ TotalRequired = 2
 AreaColor = Color(0, 1, 0, 1)
 
 [node name="SafeArea" parent="." instance=ExtResource("26_ya2ca")]
-visible = false
 
 [connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_exited"]

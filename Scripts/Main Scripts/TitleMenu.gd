@@ -7,6 +7,9 @@ extends Node2D
 var isActive = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if(!Music.playing):
+		Music.changeSong("menu")
+		Music.FadeSong(true);
 	#get_node("CanvasLayer/Transition").start(false);
 	pass # Replace with function body.
 
@@ -51,7 +54,7 @@ func SelectButton(button):
 		0:
 			get_tree().change_scene_to_file("res://Scenes/GameScenes/InfoMenu.tscn")
 		1:
-			get_tree().change_scene_to_file("res://Scenes/GameScenes/S1.tscn")
+			get_tree().change_scene_to_file("res://Scenes/GameScenes/IntroMenu.tscn")
 		2:
 			get_tree().change_scene_to_file("res://Scenes/GameScenes/LevelMenu.tscn")
 	pass

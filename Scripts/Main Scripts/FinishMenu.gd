@@ -108,7 +108,7 @@ func selectOption(op):
 	tra.start(true)
 	var sceneName = str(get_tree().current_scene.name);
 	var numb = int(sceneName) + 1
-	if(op == 2 || numb >= 11): Music.FadeSong(false)
+	if(op == 2 || numb >= 11 || numb == 6): Music.FadeSong(false)
 	await get_tree().create_timer(0.5).timeout
 	match op:
 		0:
