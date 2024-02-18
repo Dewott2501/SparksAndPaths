@@ -17,6 +17,7 @@ var maxvel = 3;
 var clickCooldown = 0;
 var finished = false;
 var curLamp = "";
+var curMouse = "";
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if(Music.volume < -30):
@@ -126,7 +127,9 @@ func changeMouse(spr):
 		"select": offset = Vector2(6, 4)
 		"grab": offset = Vector2(22, 16)
 		
-	Input.set_custom_mouse_cursor(load("res://Sprites/mouse/" + spr + ".png"), Input.CURSOR_ARROW, offset)
+	if(curMouse != spr):
+		Input.set_custom_mouse_cursor(load("res://Sprites/mouse/" + spr + ".png"), Input.CURSOR_ARROW, offset)
+	curMouse = spr;
 	
 func endLv():
 	EVILspirits = get_tree().get_nodes_in_group("PurpleS");
