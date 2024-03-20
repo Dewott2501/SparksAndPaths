@@ -93,16 +93,16 @@ polygon = PackedVector2Array(-1443, 776, 207, 776, 207, 626, 357, 626, 357, 776,
 closed = false
 polygon = PackedVector2Array(-993, -574, -843, -574, -843, -424, -243, -424, -243, 176, 807, 176, 807, -574, 1107, -574, 1107, 326, 357, 326, 357, 476, 207, 476, 207, 326, -393, 326, -393, -274, -993, -274)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whhx6"]
+shader = ExtResource("26_shx1u")
+shader_parameter/color1 = Vector3(1, 0, 1)
+shader_parameter/color2 = Vector3(0, 1, 1)
+
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_5t0bb"]
 vertices = PackedVector2Array(-125, -1079, 2785, -1090, 2432, -869, 2019, -867, 2778, 492, 2413, 119, 1675, 228, 1671, 99, 837, 125, 1463, 101, 1465, 240, 2019, -113, 1105, -134, 1105, -719, 487, -885, 239, -481, 844, -475, -118, 481, 487, -734, 230, -895)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(2, 1, 4, 5), PackedInt32Array(6, 7, 5, 4), PackedInt32Array(8, 9, 10), PackedInt32Array(3, 11, 12, 13), PackedInt32Array(0, 3, 13, 14), PackedInt32Array(15, 16, 8, 17), PackedInt32Array(13, 18, 14), PackedInt32Array(0, 14, 19), PackedInt32Array(17, 0, 19, 15), PackedInt32Array(4, 17, 8, 10), PackedInt32Array(4, 10, 6)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-127.72, 490.534, 2788.28, 502.534, 2788.28, 502.534, 2796.28, -1101.47, -135.72, -1089.47), PackedVector2Array(240.28, -885.466, 477.28, -875.466, 477.28, -725.466, 1095.28, -709.466, 1095.28, -125.466, 2029.28, -103.466, 2029.28, -857.466, 2422.28, -859.466, 2403.28, 108.534, 1661.28, 88.534, 1665.28, 218.534, 1475.28, 228.534, 1473.28, 90.534, 847.28, 114.534, 855.28, -485.466, 249.28, -491.466)])
 source_geometry_group_name = &"navigation_polygon_source_group"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_whhx6"]
-shader = ExtResource("26_shx1u")
-shader_parameter/color1 = Vector3(1, 0, 1)
-shader_parameter/color2 = Vector3(0, 1, 1)
 
 [node name="S9" type="Node2D"]
 script = ExtResource("1_ss7h4")
@@ -393,11 +393,6 @@ occluder = SubResource("OccluderPolygon2D_2wcd1")
 [node name="LightOccluder2D2" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_cqbu5")
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
-position = Vector2(-1283.28, 249.466)
-navigation_polygon = SubResource("NavigationPolygon_5t0bb")
-
 [node name="Props" type="Node2D" parent="."]
 
 [node name="Props3" parent="Props" instance=ExtResource("28_bascr")]
@@ -505,6 +500,10 @@ position = Vector2(1302, 527)
 
 [node name="SafeArea2" parent="." instance=ExtResource("27_ydeol")]
 position = Vector2(-1044, 513)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(-1283.28, 249.466)
+navigation_polygon = SubResource("NavigationPolygon_5t0bb")
 
 [connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_exited"]
