@@ -1,6 +1,7 @@
 extends Sprite2D
 
 var ishovering = false;
+var isAvailable = true;
 
 
 func _on_button_mouse_entered():

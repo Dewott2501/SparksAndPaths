@@ -4,6 +4,7 @@ extends Sprite2D
 var useButtons = false;
 var son = [false, false, false];
 var rotCon = 0;
+var canContinue = false;
 @onready var sound = get_tree().get_current_scene().get_node("SFX");
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,26 +19,33 @@ func _process(delta):
 	
 	if(useButtons):
 		for i in sprites.size():
-			if(sprites[i].ishovering):
-				if !son[i]:
-					sound.playsound("hover", 1, 1.3)
-					son[i] = true;
-				var proper = [Color(1.4, 1.4, 1.4), Vector2(1.2, 1.2)]
-				if Input.is_action_pressed("ClickL"):
-					proper = [Color(0.3, 0.3, 0.3), Vector2(0.9, 0.9)]
-				sprites[i].modulate = lerp(sprites[i].modulate, proper[0], delta * 10)
-				sprites[i].scale = lerp(sprites[i].scale, proper[1], delta * 10)
-				
-				rotCon += delta * 5;
-				sprites[i].rotation_degrees = lerpf(sprites[i].rotation_degrees, sin(rotCon) * 5, delta * 10)
-				
-				if Input.is_action_just_released("ClickL"):
-					selectOption(i)
+			var cont = true;
+			if(i == 1 && !canContinue): cont = false
+			if(sprites[i].ishovering && cont):
+					if !son[i]:
+						sound.playsound("hover", 1, 1.3)
+						son[i] = true;
+					var proper = [Color(1.4, 1.4, 1.4), Vector2(1.2, 1.2)]
+					if Input.is_action_pressed("ClickL"):
+						proper = [Color(0.3, 0.3, 0.3), Vector2(0.9, 0.9)]
+					sprites[i].modulate = lerp(sprites[i].modulate, proper[0], delta * 10)
+					sprites[i].scale = lerp(sprites[i].scale, proper[1], delta * 10)
+					
+					rotCon += delta * 5;
+					sprites[i].rotation_degrees = lerpf(sprites[i].rotation_degrees, sin(rotCon) * 5, delta * 10)
+					
+					if Input.is_action_just_released("ClickL"):
+						selectOption(i)
 			else:
-				son[i] = false;
-				sprites[i].modulate = lerp(sprites[i].modulate, Color(1, 1, 1), delta * 10)
-				sprites[i].scale = lerp(sprites[i].scale, Vector2(1, 1), delta * 10)
-				sprites[i].rotation_degrees = lerpf(sprites[i].rotation_degrees, 0, delta * 10)
+				if(cont):
+					son[i] = false;
+					sprites[i].modulate = lerp(sprites[i].modulate, Color(1, 1, 1), delta * 10)
+					sprites[i].scale = lerp(sprites[i].scale, Vector2(1, 1), delta * 10)
+					sprites[i].rotation_degrees = lerpf(sprites[i].rotation_degrees, 0, delta * 10)
+				else:
+					sprites[i].modulate = lerp(sprites[i].modulate, Color(0.5, 0.5, 0.5), delta * 10)
+					sprites[i].scale = lerp(sprites[i].scale, Vector2(1, 1), delta * 10)
+					sprites[i].rotation_degrees = lerpf(sprites[i].rotation_degrees, 0, delta * 10)					
 	else:
 		for i in sprites.size():
 			sprites[i].modulate = lerp(sprites[i].modulate, Color(0.5, 0.5, 0.5), delta * 10)
@@ -56,7 +64,9 @@ func finishLevel():
 	var amounts = [exit.sp1, exit.sp2, exit.sp3, exit.curSpirits]
 	var Rtext = $ResultText;
 	var diamonds = get_tree().get_nodes_in_group("Diamonds")
-	if(amounts[3] >= amounts[0]): Rtext.text = "[center]Level Completed!"
+	if(amounts[3] >= amounts[0]): 
+		Rtext.text = "[center]Level Completed!"
+		canContinue = true;
 	
 	for i in diamonds.size():
 		diamonds[i].get_child(0).text = "[center]" + str(amounts[3]) + " / " + str(amounts[i])
@@ -95,7 +105,8 @@ func finishLevel():
 			tween5.tween_property(diamonds[i], "modulate", Color(1, 1, 1), 0.4).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	
 	var sceneName = str(get_tree().current_scene.name);
-	SaveData.saveVal[int(sceneName) - 1] = totalgems;
+	if(SaveData.saveVal[int(sceneName) - 1] <= totalgems):
+		SaveData.saveVal[int(sceneName) - 1] = totalgems;
 	await get_tree().create_timer(0.6).timeout
 	
 	toggleButtons(true);

@@ -21,7 +21,7 @@ func _ready():
 func _process(delta):
 	if(isActive):
 		for i in buttons.size():
-			if(buttons[i].ishovering):
+			if(buttons[i].ishovering && buttons[i].isAvailable):
 				if(buttons[i].modulate == Color(0.6, 0.6, 0.6)):
 					sound.playsound("hover", 1, 1.3)
 				buttons[i].modulate = Color(1, 1, 1)
@@ -57,6 +57,8 @@ func generateLevels(amount):
 			ins.get_child(0).get_child(1).position.x += 17;
 		ins.get_child(0).get_child(1).frame = i; # LEVEL NUMBER
 		ins.get_child(0).get_child(0).frame = SaveData.saveVal[i]; # RATING VALUE
+		if(i > 0 && SaveData.saveVal[i-1] == 0):
+			ins.get_child(0).isAvailable = false;
 		ins.name = str(i);
 		if i > 4:
 			yval += 210
