@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://2lm6grw7etib"]
+[gd_scene load_steps=12 format=3 uid="uid://2lm6grw7etib"]
 
 [ext_resource type="Texture2D" uid="uid://b5qjp5cy0smcp" path="res://Sprites/Exit/Ball.png" id="1_3a8ij"]
 [ext_resource type="Script" path="res://Scripts/exit.gd" id="1_027ef"]
@@ -50,6 +50,9 @@ _data = {
 "RESET": SubResource("Animation_fcko8")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_226q7"]
+blend_mode = 1
+
 [sub_resource type="Gradient" id="Gradient_f1jhg"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
@@ -70,7 +73,6 @@ show_behind_parent = true
 position = Vector2(-5, 1)
 texture = ExtResource("1_3a8ij")
 hframes = 3
-frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visual/Ball"]
 deterministic = true
@@ -84,7 +86,16 @@ movie_quit_on_finish = true
 position = Vector2(-8, 226)
 texture = ExtResource("4_64u2h")
 
+[node name="LightMobile" type="Sprite2D" parent="Visual"]
+self_modulate = Color(0, 1, 1, 0.329412)
+z_index = 3
+material = SubResource("CanvasItemMaterial_226q7")
+scale = Vector2(5, 5)
+texture = ExtResource("3_3q7ub")
+
 [node name="PointLight2D" type="PointLight2D" parent="Visual"]
+visible = false
+enabled = false
 color = Color(0, 1, 1, 1)
 shadow_color = Color(0, 0, 0, 1)
 texture = ExtResource("3_3q7ub")

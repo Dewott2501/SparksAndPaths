@@ -474,6 +474,7 @@ libraries = {
 
 [node name="Light" type="PointLight2D" parent="."]
 position = Vector2(0, 28)
+enabled = false
 color = Color(0, 1, 1, 0.603922)
 range_z_max = 1
 texture = ExtResource("2_vecvn")

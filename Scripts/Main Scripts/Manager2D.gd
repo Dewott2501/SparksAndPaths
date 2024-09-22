@@ -25,9 +25,13 @@ func _ready():
 		if(int(sceneName) >= 6): Music.changeSong("level2")	
 		else: Music.changeSong("level")
 		Music.FadeSong(true);
-	
+	if OS.get_name() != "Windows":
+		Engine.set_physics_ticks_per_second(20)
 	var lamps = get_tree().get_nodes_in_group("Lamp")
 	for i in lamps.size():
+		if OS.get_name() != "Windows":
+			lamps[i].get_node("sign/Light").enabled = false;
+			#lamps[i].get_node("sign/LightMobile").visible = true;
 		signL.append(lamps[i].get_node("sign"))
 		signSp.append(lamps[i].get_node("Lamp/Body/Sprite2D"))
 		light.append(lamps[i].get_node("sign/Light"))

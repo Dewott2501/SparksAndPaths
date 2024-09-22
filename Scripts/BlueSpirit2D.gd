@@ -22,6 +22,7 @@ var safe = false;
 var stuck = false;
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	light.enabled = false;
 	if(evil):
 		changeBand(true)
 	var lamps = get_tree().get_nodes_in_group("Lamp")

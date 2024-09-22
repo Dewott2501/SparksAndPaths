@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsvfkxga0dev1"]
+[gd_scene load_steps=7 format=3 uid="uid://bsvfkxga0dev1"]
 
 [ext_resource type="Texture2D" uid="uid://bx3ffhnb6trpp" path="res://Sprites/lights/luz.png" id="1_2kevm"]
 [ext_resource type="Texture2D" uid="uid://c6e021k0brhhw" path="res://Sprites/lamp.png" id="2_sq0ph"]
@@ -8,6 +8,9 @@ size = Vector2(130, 132)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3wbne"]
 size = Vector2(362, 178)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xx1w4"]
+blend_mode = 1
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rj3pq"]
 radius = 28.35
@@ -39,13 +42,22 @@ shape = SubResource("RectangleShape2D_3wbne")
 one_way_collision_margin = 0.0
 
 [node name="Light" type="PointLight2D" parent="sign"]
-z_index = 1
 position = Vector2(0, 202)
 scale = Vector2(2, 2)
+enabled = false
 color = Color(0.992157, 0.945098, 0.207843, 1)
+range_z_max = 1
 shadow_enabled = true
 texture = ExtResource("1_2kevm")
 texture_scale = 4.6
+
+[node name="LightMobile" type="Sprite2D" parent="sign"]
+visible = false
+self_modulate = Color(0.992157, 0.945098, 0.207843, 0.47451)
+material = SubResource("CanvasItemMaterial_xx1w4")
+position = Vector2(0, 202)
+scale = Vector2(9.2, 9.2)
+texture = ExtResource("1_2kevm")
 
 [node name="Lamp" type="Node2D" parent="."]
 position = Vector2(-1252, 545)

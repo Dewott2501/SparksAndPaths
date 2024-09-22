@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://3u1opqjjp7k7"]
+[gd_scene load_steps=52 format=4 uid="uid://3u1opqjjp7k7"]
 
 [ext_resource type="Script" path="res://Scripts/Main Scripts/Manager2D.gd" id="1_12ji5"]
 [ext_resource type="Shader" path="res://Scripts/Shaders/vigette.gdshader" id="2_f0l2m"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/Transition.gd" id="3_hyn8v"]
 [ext_resource type="Texture2D" uid="uid://d1vbg02ti5t23" path="res://Sprites/Menu/result.png" id="4_3ep22"]
 [ext_resource type="Script" path="res://Scripts/Main Scripts/FinishMenu.gd" id="5_icewq"]
+[ext_resource type="Script" path="res://Scenes/GameScenes/debug.gd" id="5_r0i3i"]
 [ext_resource type="Texture2D" uid="uid://4rmnju72c3xi" path="res://Sprites/Menu/menuButtons/diamond0.png" id="6_dxmwr"]
 [ext_resource type="Texture2D" uid="uid://8sbx8b8rc065" path="res://Sprites/Menu/menuButtons/MenuR0.png" id="7_isudb"]
 [ext_resource type="Script" path="res://Scripts/mousehover.gd" id="8_l5ry8"]
@@ -49,6 +50,45 @@ shader_parameter/progress = 0.0
 shader_parameter/PixelSize = 28.535
 shader_parameter/color = Vector3(0, 0, 0)
 
+[sub_resource type="Animation" id="Animation_0uce2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vbfo6"]
+resource_name = "show"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(-0.0333333, 0.5),
+"transitions": PackedFloat32Array(0.210224, 0.164939),
+"update": 0,
+"values": [Vector2(-59.805, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m1jic"]
+_data = {
+"RESET": SubResource("Animation_0uce2"),
+"show": SubResource("Animation_vbfo6")
+}
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ar73s"]
+blend_mode = 3
+
 [sub_resource type="Gradient" id="Gradient_81fki"]
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.523013, 0.615063)
@@ -79,14 +119,14 @@ use_texture_padding = false
 tile_size = Vector2i(50, 50)
 sources/1 = SubResource("TileSetAtlasSource_7pgox")
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6l6oi"]
-polygon = PackedVector2Array(-1500, -900, -600, -900, -600, 450, 600, 450, 600, -900, 1500, -900, 1500, 900, -1500, 900)
-
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_sihc5"]
 vertices = PackedVector2Array(1893, 213, 1893, -1139, 2773, -1135, 2771, 640, -207, 641, 673, 209, -207, -1138, 673, -1135)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(0, 3, 4, 5), PackedInt32Array(5, 4, 6, 7)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-216.72, -1149.47, 683.28, -1145.47, 683.28, 198.534, 1883.28, 202.534, 1884.28, -1150.47, 2784.28, -1145.47, 2781.28, 649.534, -216.72, 651.534)])
 source_geometry_group_name = &"navigation_polygon_source_group"
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mpjq2"]
+polygon = PackedVector2Array(-1500, -900, -600, -900, -600, 450, 600, 450, 600, -900, 1500, -900, 1500, 900, -1500, 900)
 
 [node name="S1" type="Node2D"]
 script = ExtResource("1_12ji5")
@@ -95,6 +135,7 @@ script = ExtResource("1_12ji5")
 process_mode = 3
 
 [node name="vigette" type="ColorRect" parent="CanvasLayer"]
+visible = false
 modulate = Color(1, 1, 1, 0.682353)
 material = SubResource("ShaderMaterial_2rw7u")
 offset_right = 1280.0
@@ -119,6 +160,7 @@ size_flags_stretch_ratio = 0.0
 color = Color(0, 0, 0, 0)
 
 [node name="Transition" type="ColorRect" parent="CanvasLayer"]
+visible = false
 modulate = Color(0, 0, 0, 1)
 z_index = 1
 material = SubResource("ShaderMaterial_mbl77")
@@ -128,6 +170,12 @@ offset_right = 1286.0
 offset_bottom = 726.0
 color = Color(0, 0, 0, 1)
 script = ExtResource("3_hyn8v")
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 277.0
+offset_bottom = 116.0
+text = "FPS: "
+script = ExtResource("5_r0i3i")
 
 [node name="FinishSp" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(625, -352)
@@ -299,6 +347,11 @@ hframes = 4
 frame = 2
 script = ExtResource("8_l5ry8")
 
+[node name="Anim" type="AnimationPlayer" parent="CanvasLayer/Pause"]
+libraries = {
+"": SubResource("AnimationLibrary_m1jic")
+}
+
 [node name="HUD" type="Node2D" parent="CanvasLayer"]
 
 [node name="Button" type="Button" parent="CanvasLayer/HUD"]
@@ -314,6 +367,22 @@ position = Vector2(69, 69)
 texture = ExtResource("14_872yy")
 hframes = 2
 script = ExtResource("8_l5ry8")
+
+[node name="M_Shadow" type="ColorRect" parent="."]
+visible = false
+z_index = 1
+material = SubResource("CanvasItemMaterial_ar73s")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1751.0
+offset_top = -1180.0
+offset_right = -1420.0
+offset_bottom = -936.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(10.46, 10.46)
+color = Color(0.431933, 0.4235, 0.55, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.4, 0.4)
@@ -346,12 +415,6 @@ texture = SubResource("GradientTexture2D_5pyo0")
 [node name="Lamp" parent="." instance=ExtResource("18_shgec")]
 position = Vector2(180, -1137)
 
-[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
-color = Color(1, 1, 0.796078, 1)
-energy = 0.65
-blend_mode = 1
-range_z_max = 1
-
 [node name="Exit" parent="." instance=ExtResource("19_ymsfw")]
 position = Vector2(1082, -714)
 sp1 = 1
@@ -370,12 +433,16 @@ scale = Vector2(3, 3)
 tile_set = SubResource("TileSet_3834r")
 rendering_quadrant_size = 50
 format = 2
-layer_0/tile_data = PackedInt32Array(458747, 65537, 1, 131082, 1, 1, 393218, 65537, 1, 458741, 65537, 0, 458742, 65537, 1, 458743, 65537, 1, 458744, 65537, 1, 458745, 65537, 1, 458746, 65537, 1, 458748, 65537, 1, 458749, 65537, 1, 458750, 65537, 1, 458751, 65537, 1, 393216, 65537, 1, 393217, 65537, 1, 393219, 65537, 1, 393220, 65537, 1, 393221, 65537, 1, 393222, 65537, 1, 393223, 65537, 1, 393224, 65537, 1, 393225, 65537, 1, 393226, 65537, 0, 327690, 1, 1, 262154, 1, 1, 196618, 1, 1, 65546, 1, 1, 10, 1, 1, -65526, 1, 1, -131062, 1, 1, -196598, 1, 1, -262134, 1, 1, -458742, 1, 0, -393206, 1, 1, -327670, 1, 1, -393227, 1, 0, -393226, 65537, 1, -393225, 65537, 1, -393224, 65537, 1, -393223, 65537, 1, -393222, 65537, 1, -393221, 65537, 1, -393220, 65537, 1, -393219, 65537, 1, -393218, 65537, 1, -393217, 65537, 1, -458752, 65537, 1, -458751, 65537, 1, -458750, 65537, 1, -458749, 65537, 1, -458748, 65537, 1, -458747, 65537, 1, -458746, 65537, 1, -458745, 65537, 1, -458744, 65537, 1, -458743, 65537, 1, -327691, 1, 1, -262155, 1, 1, -196619, 1, 1, -131083, 1, 1, -65547, 1, 1, -11, 1, 1, 65525, 1, 1, 131061, 1, 1, 262133, 1, 1, 327669, 1, 1, 393205, 1, 1, 196597, 1, 1, -65540, 1, 1, -4, 1, 1, 65532, 1, 1, 131068, 1, 1, 196604, 65537, 0, 131075, 65537, 0, 65539, 1, 1, 3, 1, 1, -65533, 1, 1, -131069, 1, 1, 196605, 65537, 1, 196606, 65537, 1, 196607, 65537, 1, 131072, 65537, 1, 131073, 65537, 1, 131074, 65537, 1, -327683, 1, 2, -262147, 1, 2, -196611, 1, 2, -131075, 1, 2, -327682, 1, 2, -262146, 1, 2, -196610, 1, 2, -131074, 1, 2, -327681, 1, 2, -262145, 1, 2, -196609, 1, 2, -131073, 1, 2, -393216, 1, 2, -327680, 1, 2, -262144, 1, 2, -196608, 1, 2, -393215, 1, 2, -327679, 1, 2, -262143, 1, 2, -196607, 1, 2, -393214, 1, 2, -327678, 1, 2, -262142, 1, 2, -196606, 1, 2, -65539, 1, 2, -3, 1, 2, 65533, 1, 2, 131069, 1, 2, -65538, 1, 2, -2, 1, 2, 65534, 1, 2, 131070, 1, 2, -65537, 1, 2, -1, 1, 2, 65535, 1, 2, 131071, 1, 2, -131072, 1, 2, -65536, 1, 2, 0, 1, 2, 65536, 1, 2, -131071, 1, 2, -65535, 1, 2, 1, 1, 2, 65537, 1, 2, -131070, 1, 2, -65534, 1, 2, 2, 1, 2, 65538, 1, 2, -327684, 1, 1, -262148, 1, 1, -196612, 1, 1, -131076, 1, 1, -393213, 1, 1, -327677, 1, 1, -262141, 1, 1, -196605, 1, 1)
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_6l6oi")
+[node name="Walls" type="TileMapLayer" parent="TileMap2"]
+texture_filter = 1
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD7/wYAAQABAAEAAAAKAAIAAQAAAAEAAAACAAYAAQABAAEAAAD1/wYAAQABAAAAAAD2/wYAAQABAAEAAAD3/wYAAQABAAEAAAD4/wYAAQABAAEAAAD5/wYAAQABAAEAAAD6/wYAAQABAAEAAAD8/wYAAQABAAEAAAD9/wYAAQABAAEAAAD+/wYAAQABAAEAAAD//wYAAQABAAEAAAAAAAYAAQABAAEAAAABAAYAAQABAAEAAAADAAYAAQABAAEAAAAEAAYAAQABAAEAAAAFAAYAAQABAAEAAAAGAAYAAQABAAEAAAAHAAYAAQABAAEAAAAIAAYAAQABAAEAAAAJAAYAAQABAAEAAAAKAAYAAQABAAAAAAAKAAUAAQAAAAEAAAAKAAQAAQAAAAEAAAAKAAMAAQAAAAEAAAAKAAEAAQAAAAEAAAAKAAAAAQAAAAEAAAAKAP//AQAAAAEAAAAKAP7/AQAAAAEAAAAKAP3/AQAAAAEAAAAKAPz/AQAAAAEAAAAKAPn/AQAAAAAAAAAKAPr/AQAAAAEAAAAKAPv/AQAAAAEAAAD1//n/AQAAAAAAAAD2//n/AQABAAEAAAD3//n/AQABAAEAAAD4//n/AQABAAEAAAD5//n/AQABAAEAAAD6//n/AQABAAEAAAD7//n/AQABAAEAAAD8//n/AQABAAEAAAD9//n/AQABAAEAAAD+//n/AQABAAEAAAD///n/AQABAAEAAAAAAPn/AQABAAEAAAABAPn/AQABAAEAAAACAPn/AQABAAEAAAADAPn/AQABAAEAAAAEAPn/AQABAAEAAAAFAPn/AQABAAEAAAAGAPn/AQABAAEAAAAHAPn/AQABAAEAAAAIAPn/AQABAAEAAAAJAPn/AQABAAEAAAD1//r/AQAAAAEAAAD1//v/AQAAAAEAAAD1//z/AQAAAAEAAAD1//3/AQAAAAEAAAD1//7/AQAAAAEAAAD1////AQAAAAEAAAD1/wAAAQAAAAEAAAD1/wEAAQAAAAEAAAD1/wMAAQAAAAEAAAD1/wQAAQAAAAEAAAD1/wUAAQAAAAEAAAD1/wIAAQAAAAEAAAD8//7/AQAAAAEAAAD8////AQAAAAEAAAD8/wAAAQAAAAEAAAD8/wEAAQAAAAEAAAD8/wIAAQABAAAAAAADAAIAAQABAAAAAAADAAEAAQAAAAEAAAADAAAAAQAAAAEAAAADAP//AQAAAAEAAAADAP7/AQAAAAEAAAD9/wIAAQABAAEAAAD+/wIAAQABAAEAAAD//wIAAQABAAEAAAAAAAIAAQABAAEAAAABAAIAAQABAAEAAAACAAIAAQABAAEAAAD9//r/AQAAAAIAAAD9//v/AQAAAAIAAAD9//z/AQAAAAIAAAD9//3/AQAAAAIAAAD+//r/AQAAAAIAAAD+//v/AQAAAAIAAAD+//z/AQAAAAIAAAD+//3/AQAAAAIAAAD///r/AQAAAAIAAAD///v/AQAAAAIAAAD///z/AQAAAAIAAAD///3/AQAAAAIAAAAAAPr/AQAAAAIAAAAAAPv/AQAAAAIAAAAAAPz/AQAAAAIAAAAAAP3/AQAAAAIAAAABAPr/AQAAAAIAAAABAPv/AQAAAAIAAAABAPz/AQAAAAIAAAABAP3/AQAAAAIAAAACAPr/AQAAAAIAAAACAPv/AQAAAAIAAAACAPz/AQAAAAIAAAACAP3/AQAAAAIAAAD9//7/AQAAAAIAAAD9////AQAAAAIAAAD9/wAAAQAAAAIAAAD9/wEAAQAAAAIAAAD+//7/AQAAAAIAAAD+////AQAAAAIAAAD+/wAAAQAAAAIAAAD+/wEAAQAAAAIAAAD///7/AQAAAAIAAAD/////AQAAAAIAAAD//wAAAQAAAAIAAAD//wEAAQAAAAIAAAAAAP7/AQAAAAIAAAAAAP//AQAAAAIAAAAAAAAAAQAAAAIAAAAAAAEAAQAAAAIAAAABAP7/AQAAAAIAAAABAP//AQAAAAIAAAABAAAAAQAAAAIAAAABAAEAAQAAAAIAAAACAP7/AQAAAAIAAAACAP//AQAAAAIAAAACAAAAAQAAAAIAAAACAAEAAQAAAAIAAAD8//r/AQAAAAEAAAD8//v/AQAAAAEAAAD8//z/AQAAAAEAAAD8//3/AQAAAAEAAAADAPr/AQAAAAEAAAADAPv/AQAAAAEAAAADAPz/AQAAAAEAAAADAP3/AQAAAAEAAAA=")
+tile_set = SubResource("TileSet_3834r")
+rendering_quadrant_size = 50
 
 [node name="Props" type="Node2D" parent="."]
+visible = false
 
 [node name="0" type="Sprite2D" parent="Props"]
 position = Vector2(-20, -299)
@@ -454,6 +521,15 @@ position = Vector2(1373, -161)
 visible = false
 position = Vector2(-1283.28, 249.466)
 navigation_polygon = SubResource("NavigationPolygon_sihc5")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+color = Color(1, 1, 0.796078, 1)
+energy = 0.65
+blend_mode = 1
+range_z_max = 1
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_mpjq2")
 
 [connection signal="mouse_entered" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/FinishSp/Button" to="CanvasLayer/FinishSp/Button/R0" method="_on_button_mouse_exited"]

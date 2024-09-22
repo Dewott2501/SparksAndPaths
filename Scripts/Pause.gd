@@ -13,6 +13,7 @@ func _process(delta):
 		hudPause.scale = lerp(hudPause.scale, Vector2(1.2, 1.2), delta * 10)
 		if Input.is_action_just_released("ClickL"):
 			visible = true;
+			$Anim.play("show")
 			hudPause.get_parent().visible = false;
 			get_tree().paused = true;
 			isActive = true;
